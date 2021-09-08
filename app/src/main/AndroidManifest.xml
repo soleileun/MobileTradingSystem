@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My4WeeksChallenge">
         <activity
+            android:name=".sub"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
