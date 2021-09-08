@@ -4,10 +4,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        findViewById(R.id.button).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SubActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -41,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.rightButton: { // 오른쪽 상단 버튼 눌렀을 때
-                Toast.makeText(this, "rightButton", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "검색", Toast.LENGTH_SHORT).show();
             }
             case R.id.nextRightButton: { // 오른쪽 상단 버튼 눌렀을 때
-                Toast.makeText(this, "nextRightButton", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "환경설정", Toast.LENGTH_SHORT).show();
             }
 
         }
