@@ -139,7 +139,9 @@
         android:layout_width="43dp"
         android:layout_height="47dp"
         android:layout_marginTop="58dp"
+        android:backgroundTint="#00ff0000"
         android:text="X"
+        android:background="@drawable/empty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/horizontalScrollView2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -147,13 +149,12 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="35dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/shadow"
-        app:layout_constraintTop_toTopOf="@+id/textView8"
-        tools:layout_editor_absoluteX="14dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+         />
 
     <TextView
         android:id="@+id/textView8"
@@ -183,19 +184,40 @@
     <EditText
         android:id="@+id/editTextNumberPassword"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberPassword"
-        android:layout_marginTop="25dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="45dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button"
-        android:textAlignment="center"
+        android:ems="10"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:inputType="numberPassword"
+        android:textAlignment="center"
         app:layout_constraintLeft_toRightOf="@id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView8"
 
         />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#80646464"
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:text="상세보기"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
