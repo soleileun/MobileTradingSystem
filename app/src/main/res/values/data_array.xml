@@ -2,12 +2,12 @@
 <resources>
 
     <string-array name="my_account">
-        <item>39002406-010</item>
-        <item>39002406-011</item>
-        <item>39002406-012</item>
-        <item>39002509-010</item>
-        <item>39002509-011</item>
-        <item>39002509-012</item>
+        <item>39002406-010  종합매매</item>
+        <item>39002406-011  종합매매</item>
+        <item>39002406-310  연금저축</item>
+        <item>39002509-010  종합매매</item>
+        <item>39002509-011  종합매매</item>
+        <item>39002509-012  종합매매</item>
     </string-array>
 
 </resources>
