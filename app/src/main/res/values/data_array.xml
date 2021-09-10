@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="my_account">
+        <item>39002406-010</item>
+        <item>39002406-011</item>
+        <item>39002406-012</item>
+        <item>39002509-010</item>
+        <item>39002509-011</item>
+        <item>39002509-012</item>
+    </string-array>
+
+</resources>
