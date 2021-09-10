@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -187,16 +188,17 @@
         android:layout_height="40dp"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/button"
         android:ems="10"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:inputType="numberPassword"
         android:textAlignment="center"
-        app:layout_constraintLeft_toRightOf="@id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
 
-        />
+        app:layout_constraintLeft_toRightOf="@id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <View
         android:id="@+id/view"
@@ -220,858 +222,956 @@
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
 
-    <ScrollView
-        android:layout_width="match_parent"
+      <ScrollView
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginTop="24dp"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+<!--          android:overScrollMode="ifContentScrolls"-->
+<!--          android:fillViewport="true"-->
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:orientation="vertical">
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd8"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd7"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:id="@+id/gap"
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd6"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd5"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd4"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <Button
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd3"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd2"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+
+              <androidx.gridlayout.widget.GridLayout
+                  android:id="@+id/grd1"
+                  android:layout_width="match_parent"
+                  android:layout_height="58dp"
+                  android:background="@drawable/line"
+                  app:columnCount="6"
+                  app:rowCount="12">
+
+
+                  <TextView
+                      android:layout_width="135dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingTop="5dp"
+                      android:text="SK하이닉스"
+                      android:textColor="@color/black"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      app:layout_columnSpan="2"
+                      app:layout_gravity="fill_vertical" />
+
+                  <TextView
+                      android:layout_width="183dp"
+                      android:layout_height="match_parent"
+                      android:paddingTop="7dp"
+                      android:paddingEnd="10dp"
+                      android:text="103,000"
+                      android:textAlignment="textEnd"
+                      android:textColor="#2196F3"
+                      android:textSize="30sp"
+                      app:layout_gravity="fill_horizontal"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="18dp"
+                      android:text="▼"
+                      android:textColor="#2196F3"
+                      android:textSize="15dp"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:text="3,000"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+                  <TextView
+                      android:layout_width="15dp"
+                      android:layout_height="match_parent"
+                      android:text="!"
+                      app:layout_gravity="top"
+                      app:layout_rowSpan="2" />
+
+                  <TextView
+                      android:layout_width="85dp"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:text="1,972,500" />
+
+                  <TextView
+                      android:layout_width="50dp"
+                      android:layout_height="30dp"
+                      android:text="-" />
+
+
+                  <TextView
+                      android:layout_width="52dp"
+                      android:layout_height="31dp"
+                      android:text="2.83%"
+                      android:textAlignment="center"
+                      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                      android:textColor="#2196F3"
+                      app:layout_gravity="top" />
+
+
+              </androidx.gridlayout.widget.GridLayout>
+          </LinearLayout>
+      </ScrollView>
+
+
+    <Button
+        android:id="@+id/button26"
+        android:layout_width="52dp"
+        android:layout_height="60dp"
+        android:background="#32323C"
+        android:text="메뉴"
+        android:textColor="#787878"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <HorizontalScrollView
+        android:id ="@+id/bottom_bar"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd8"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd7"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:id="@+id/gap"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd6"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd5"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd4"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd3"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd2"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
-
-            <androidx.gridlayout.widget.GridLayout
-                android:id="@+id/grd1"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:background="@drawable/line"
-                app:columnCount="6"
-                app:rowCount="12">
-
-
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:text="SK하이닉스"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_columnSpan="2"
-                    app:layout_gravity="fill_vertical" />
-
-                <TextView
-                    android:layout_width="183dp"
-                    android:layout_height="match_parent"
-                    android:paddingTop="7dp"
-                    android:paddingEnd="10dp"
-                    android:text="103,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="#2196F3"
-                    android:textSize="30sp"
-                    app:layout_gravity="fill_horizontal"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="18dp"
-                    android:text="▼"
-                    android:textColor="#2196F3"
-                    android:textSize="15dp"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:text="3,000"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-                <TextView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:text="!"
-                    app:layout_gravity="top"
-                    app:layout_rowSpan="2" />
-
-                <TextView
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="15dp"
-                    android:text="1,972,500" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="-" />
-
-
-                <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="31dp"
-                    android:text="2.83%"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#2196F3"
-                    app:layout_gravity="top" />
-
-
-            </androidx.gridlayout.widget.GridLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#32323C"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button35"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="홈"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button30"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="관심종목"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button33"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="현재가"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button31"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="주식주문"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button32"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="주식잔고"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button29"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="지수종합"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button28"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="이체"
+                android:textColor="#787878" />
+
+            <Button
+                android:id="@+id/button27"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#32323C"
+                android:text="환경설정"
+                android:textColor="#787878" />
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
