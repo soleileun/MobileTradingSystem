@@ -5,9 +5,5 @@
 
     <stroke
         android:width="2px"
-        android:color="#B4B4B4" /> //선색
-
-
-
-
+        android:color="#B4B4B4" />
 </shape>

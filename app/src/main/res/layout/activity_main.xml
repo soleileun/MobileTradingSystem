@@ -220,32 +220,18 @@
         app:layout_constraintTop_toTopOf="@+id/textView8"
         tools:layout_editor_absoluteX="10dp" />
 
-
-
-      <ListView
-          android:id="@+id/scrollView"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:layout_marginTop="24dp"
-          android:orientation="vertical"
-          app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
-          app:layout_constraintLeft_toLeftOf="parent"
-          app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-<!--          android:overScrollMode="ifContentScrolls"-->
-<!--          android:fillViewport="true"-->
-
-<!--          <LinearLayout-->
-<!--              android:layout_width="match_parent"-->
-<!--              android:layout_height="100dp"-->
-<!--              android:orientation="vertical">-->
-
-
-
-
-<!--          </LinearLayout>-->
-      </ListView>
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:background="#dedede"
+        android:numColumns="1"
+        />
 
 
     <Button
@@ -255,14 +241,16 @@
         android:background="#32323C"
         android:text="메뉴"
         android:textColor="#787878"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <HorizontalScrollView
         android:id ="@+id/bottom_bar"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
 
         <LinearLayout
@@ -335,6 +323,9 @@
                 android:text="환경설정"
                 android:textColor="#787878" />
         </LinearLayout>
+
+
+
     </HorizontalScrollView>
 
 

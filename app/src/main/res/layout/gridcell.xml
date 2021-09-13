@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00FFFFFF"
-    tools:context=".MainActivity">
-
+    android:orientation="vertical"
+    android:weightSum="100"
+    >
 
     <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/grd8"
+        android:id="@+id/grd"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:background="@drawable/line"
@@ -23,25 +23,26 @@
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
-            android:text="SK하이닉스"
+            android:text="종목"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_columnSpan="2"
             app:layout_gravity="fill_vertical" />
         <TextView
-            android:id="@+id/tradeNum"
+            android:id="@+id/stockprc"
             android:layout_width="183dp"
             android:layout_height="match_parent"
             android:paddingTop="7dp"
             android:paddingEnd="10dp"
-            android:text="103,000"
+            android:text="현재"
             android:textAlignment="textEnd"
             android:textColor="#2196F3"
             android:textSize="30sp"
             app:layout_gravity="fill_horizontal"
             app:layout_rowSpan="2" />
         <TextView
+            android:id = "@+id/updown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="18dp"
@@ -51,10 +52,11 @@
             app:layout_gravity="top"
             app:layout_rowSpan="2" />
         <TextView
+            android:id = "@+id/diff"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="3,000"
+            android:text="차액"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#2196F3"
@@ -66,18 +68,20 @@
             app:layout_gravity="top"
             app:layout_rowSpan="2" />
         <TextView
+            android:id = "@+id/tradeNum"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
-            android:text="1,972,500" />
+            android:text="거래량" />
         <TextView
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:text="-" />
         <TextView
+            android:id = "@+id/prcnt"
             android:layout_width="52dp"
             android:layout_height="31dp"
-            android:text="2.83%"
+            android:text="비율"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="#2196F3"
@@ -85,4 +89,6 @@
 
     </androidx.gridlayout.widget.GridLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
