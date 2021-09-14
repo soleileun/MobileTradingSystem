@@ -92,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
             }
             case R.id.rightButton: { // 오른쪽 상단 버튼 눌렀을 때
                 Toast.makeText(this, "검색", Toast.LENGTH_SHORT).show();
+
             }
             case R.id.nextRightButton: { // 오른쪽 상단 버튼 눌렀을 때
                 Toast.makeText(this, "환경설정", Toast.LENGTH_SHORT).show();
+
             }
 
         }
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, item.getTradeNum()+"원 - "+item.getName()+"! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, item.getPrice()+"원 - "+item.getName()+"! ", Toast.LENGTH_SHORT).show();
                 }
             });
 

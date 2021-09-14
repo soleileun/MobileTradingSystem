@@ -35,7 +35,7 @@
         android:layout_width="60dp"
         android:layout_height="30dp"
         android:layout_marginTop="200dp"
-        android:text="상세보기"
+        android:text="접기 "
         android:background="@drawable/empty"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"

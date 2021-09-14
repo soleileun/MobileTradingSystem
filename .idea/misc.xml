@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/drawable/shadow.xml" value="0.29453125" />
         <entry key="app/src/main/res/layout/activity_grid_view.xml" value="0.28203125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sub.xml" value="0.284375" />
+        <entry key="app/src/main/res/layout/activity_sub.xml" value="0.1" />
         <entry key="app/src/main/res/layout/cell.xml" value="0.25" />
         <entry key="app/src/main/res/layout/gridcell.xml" value="0.33425990271021544" />
         <entry key="app/src/main/res/layout/linear_cell.xml" value="0.2375" />
