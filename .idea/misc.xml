@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/linear_cell.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/recycler_view_item.xml" value="0.2984375" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2984375" />
+        <entry key="app/src/main/res/menu/toolbar.xml" value="0.1953125" />
       </map>
     </option>
   </component>
