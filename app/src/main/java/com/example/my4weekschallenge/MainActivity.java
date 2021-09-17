@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         this.setActionBar(toolbar);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-
+        actionbar.
         baseLayout.addView(toolbar);
 
         // this가 뭔가요?
