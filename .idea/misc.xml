@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/activity_sub.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_week1.xml" value="0.159765625" />
         <entry key="app/src/main/res/layout/cell.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/gridcell.xml" value="0.33425990271021544" />
+        <entry key="app/src/main/res/layout/gridcell.xml" value="0.1" />
         <entry key="app/src/main/res/layout/linear_cell.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/recycler_view_item.xml" value="0.2984375" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2984375" />
