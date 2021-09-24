@@ -1,12 +1,14 @@
 package com.example.my4weekschallenge;
 
 import android.app.ActionBar;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,16 +42,14 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
-        //이런식으로 크기를 결정한다
+        //이런식으로 를 결정한다 -> 이게 아니고 이걸 어떻게 쓰는건지를 알아야 제대로 쓸 수 있다는 사실
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
 
         // 전체 배경
         LinearLayout baseLayout = new LinearLayout(this);
         baseLayout.setOrientation(LinearLayout.VERTICAL);
         baseLayout.setBackgroundColor(Color.rgb(255, 255, 255));
         setContentView(baseLayout, params);
-
 
 
         // 툴바
@@ -61,12 +61,10 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
         //actionBar.setDisplayShowCustomEnabled(true); // 커스터마이징
-
-        // 툴바 좌측 아이콘 추가 (버튼으로 구현)
-        // 다양한 시도 실패중... 하...
-      //  toolbar.inflateMenu(R.menu.cstoolbar); // 서랍 아이콘으로 만들어버리기 ㅡㅡ
+        //  toolbar.inflateMenu(R.menu.cstoolbar); // 서랍 아이콘으로 하는 방법
 
         LinearLayout btnlayout = new LinearLayout(this);
+        //이렇게 해야 좌측으로 배치가능 나를 누구 기준으로 배치할거냐 생각을 해보면 됨
         btnlayout.setLayoutParams(new ActionBar.LayoutParams(
                         ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
                 ));
@@ -94,19 +92,19 @@ public class MainActivity extends AppCompatActivity {
         //수평스크롤
         LinearLayout scrollLayout = new LinearLayout(this);
         scrollLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        scrollLayout.setOrientation(LinearLayout.HORIZONTAL);
+                LinearLayout.LayoutParams.WRAP_CONTENT,140));
+
         HorizontalScrollView horizontalScrollView = new HorizontalScrollView(this);
         horizontalScrollView.setBackgroundColor(Color.LTGRAY);
-//        horizontalScrollView.setLayoutParams(new LinearLayout.LayoutParams(1000,160));
         horizontalScrollView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
+                0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
 
         LinearLayout hscrollBtnLayout = new LinearLayout(this);
+        hscrollBtnLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,140));
+        hscrollBtnLayout.setOrientation(LinearLayout.HORIZONTAL);
         Button scrollBtn1 = new Button(this);
         scrollBtn1.setText("최근조회종목");
+        scrollBtn1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
         Button scrollBtn2 = new Button(this);
         scrollBtn2.setText("보유종목(국내)");
         Button scrollBtn3 = new Button(this);
@@ -124,41 +122,51 @@ public class MainActivity extends AppCompatActivity {
 
         horizontalScrollView.addView(hscrollBtnLayout);
         scrollLayout.addView(horizontalScrollView);
+
         //수평 스크롤 옆 X 버튼
         LinearLayout btnXLayout = new LinearLayout(this);
         btnXLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT));
         Button btnX = new Button(this);
-        btnX.setHeight(50);
-        btnX.setWidth(50);
+        btnXLayout.setGravity(Gravity.END);
         btnX.setText("X");
         btnXLayout.addView(btnX);
-        btnXLayout.setGravity(Gravity.END);
 
         scrollLayout.addView(btnXLayout);
         baseLayout.addView(scrollLayout);
 
 //        View card = new View(this);
 //        card.setBackgroundColor(Color.CYAN);
+
+        // 상세보기 부분 구현
+        LinearLayout accLayout = new LinearLayout(this);
+        accLayout.setOrientation(LinearLayout.VERTICAL);
+
         TextView tv = new TextView(this);
-
-        ViewGroup.LayoutParams tp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 350);
+        LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
+        tp.topMargin = (int) dpToPx(10.f); // 여기에 넣으니까 되네
+        tv.setPadding(80,0,80,0); //
+        tp.setMargins(20,0,20,0);
+        tv.setBackgroundResource(R.drawable.cardview);
+//        tv.setBackgroundColor(Color.GREEN);
         tv.setGravity(Gravity.CENTER);
-        tv.setBackgroundColor(Color.CYAN);
+        tv.setText("ddddddd");
+//        tv.setBackgroundColor(Color.WHITE);
         tv.setLayoutParams(tp);
-        baseLayout.addView(tv);
+        accLayout.addView(tv);
 
-        LinearLayout linear = new LinearLayout(this);
-        linear.setGravity(Gravity.CENTER);
-        linear.setBackgroundColor(Color.RED);
-        baseLayout.addView(linear);
+
+        TextView line = new TextView(this);
+        line.setHeight((int) dpToPx(1));
+        line.setBackgroundColor(Color.DKGRAY);
+        accLayout.addView(line);
+        baseLayout.addView(accLayout);
+
         //상세보기
         Button btn = new Button(this);
         btn.setText("상세보기");
-//        btn.setSingleLine();
-
-        btn.setBackgroundColor(Color.BLUE);
+        btn.setBackgroundColor(Color.WHITE);
         baseLayout.addView(btn);
         //addView를 해서 paramtext
 
@@ -281,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
                 this.getResources().getDisplayMetrics());
         return px;
     }
+
 
 
 
