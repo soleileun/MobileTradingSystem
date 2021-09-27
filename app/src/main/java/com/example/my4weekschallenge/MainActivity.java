@@ -1,10 +1,12 @@
 package com.example.my4weekschallenge;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ import android.widget.Toolbar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 
 /*
 *
@@ -31,6 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ResourceType")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT,140));
 
         HorizontalScrollView horizontalScrollView = new HorizontalScrollView(this);
-        horizontalScrollView.setBackgroundColor(Color.LTGRAY);
+        horizontalScrollView.setBackgroundColor(Color.WHITE);
         horizontalScrollView.setLayoutParams(new LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
 
@@ -142,14 +147,18 @@ public class MainActivity extends AppCompatActivity {
         // 상세보기 부분 구현
         LinearLayout accLayout = new LinearLayout(this);
         accLayout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams cardlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        cardlp.setMargins(30,40,30,50);
 
+        accLayout.setLayoutParams(cardlp);
         TextView tv = new TextView(this);
         LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
         tp.topMargin = (int) dpToPx(10.f); // 여기에 넣으니까 되네
-        tv.setPadding(80,0,80,0); //
-        tp.setMargins(20,0,20,0);
-        tv.setBackgroundResource(R.drawable.cardview);
-//        tv.setBackgroundColor(Color.GREEN);
+        tv.setPadding(80,40,80,0); //
+        tp.setMargins(20,30,20,20);
+//        tv.setBackgroundResource(R.drawable.cardview);
+        tv.setBackgroundColor(Color.WHITE);
+        tv.setPadding(10,10,10,10);
         tv.setGravity(Gravity.CENTER);
         tv.setText("ddddddd");
 //        tv.setBackgroundColor(Color.WHITE);
@@ -161,29 +170,34 @@ public class MainActivity extends AppCompatActivity {
         line.setHeight((int) dpToPx(1));
         line.setBackgroundColor(Color.DKGRAY);
         accLayout.addView(line);
-        baseLayout.addView(accLayout);
+        accLayout.setId(123);
+
 
         //상세보기
-        Button btn = new Button(this);
+        TextView btn = new TextView(this);
         btn.setText("상세보기");
-        btn.setBackgroundColor(Color.WHITE);
-        baseLayout.addView(btn);
-        //addView를 해서 paramtext
 
-        TextView text = new TextView(this);
-        text.setText("  ");
-        text.setTextColor(Color.RED);
-        text.setTextSize(18);
-        baseLayout.addView(text);
+        btn.setBackgroundColor(Color.WHITE);
+        LinearLayout.LayoutParams dell = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dell.setMargins(10,10,10,10);
+        btn.setPadding(10,10,10,10);
+        btn.setLayoutParams(dell);
+      //  baseLayout.addView(btn);
+        accLayout.addView(btn);
+        btn.setGravity(Gravity.CENTER);
+        //addView를 해서 paramtext
+        accLayout.setBackgroundResource(R.drawable.cardview);
+        accLayout.setTop(200);
+        baseLayout.addView(accLayout);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "상세보기", Toast.LENGTH_SHORT).show();
+                accLayout.setVisibility(View.INVISIBLE);
             }
         });
 
-        baseLayout.addView(new Button(this));
     // 셀을 만들어볼것인데 맘 처럼 잘 안됨 ㅠ
 
         LinearLayout bigLayout = new LinearLayout(this);
