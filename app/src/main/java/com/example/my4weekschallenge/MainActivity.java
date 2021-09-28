@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -28,6 +29,8 @@ import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.logging.Level;
 
 /*
 *
@@ -175,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         sItems.setAdapter(adapter);
 
 
-        //??
+        //?? 키보드 제어하는 부분... 내가 키패드 내리고싶어서 어디서 주워온거임 ㅠㅠ
 
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
@@ -218,20 +221,124 @@ public class MainActivity extends AppCompatActivity {
         ll.setOrientation(LinearLayout.HORIZONTAL);
         ll.addView(sp);
         ll.addView(pw);
-        accLayout.addView(ll);
+       // accLayout.addView(ll);
 
 //        tv.setBackgroundColor(Color.WHITE);
         tv.setLayoutParams(tp);
      //   accLayout.addView(tv);
 
+        //잔고 카드
+        LinearLayout detail = new LinearLayout(this);
+        detail.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout jango = new LinearLayout(this);
+        TextView money = new TextView(this);
+        TextView won = new TextView(this);
+        money.setText("9,434,896,489");
+        money.setTextSize(30);
+        won.setText("원");
+        won.setTextSize(15);
+        jango.addView(money);
+        jango.addView(won);
+        LinearLayout revPer = new LinearLayout(this);
+        TextView profit = new TextView(this);
+        TextView pro =  new TextView(this);
+        profit.setText("24.80");
+        profit.setTextSize(15);
+        if (Float.parseFloat(profit.getText().toString()) >0){
+            profit.setTextColor(Color.RED);
+        }else{
+            profit.setTextColor(Color.BLUE);
+        }
+        profit.setText(profit.getText().toString() + "%");
+        pro.setText("수익률 ");
+        pro.setTextSize(15);
+        revPer.addView(pro);
+        revPer.addView(profit);
 
+        LinearLayout verll = new LinearLayout(this);
+        LinearLayout dll = new LinearLayout(this);
+        dll.setOrientation(LinearLayout.HORIZONTAL);
+        dll.addView(jango);
+        dll.addView(revPer);
+        verll.setOrientation(LinearLayout.VERTICAL);
+        //verll.addView(ll);
+        detail.addView(ll);
+        verll.addView(dll);
+
+
+        LinearLayout.LayoutParams delp = new LinearLayout.LayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
+        LinearLayout.LayoutParams txlp = new LinearLayout.LayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,0.33f));
+        delp.setMargins(10,10,10,20);
+        txlp.setMargins(5,5,5,15);
+        // 각종 디테일
+        LinearLayout line1 = new LinearLayout(this);
+        line1.setGravity(Gravity.CENTER | View.TEXT_ALIGNMENT_CENTER);
+        TextView tx1 = new TextView(this);
+        TextView tx2 = new TextView(this);
+        TextView tx3 = new TextView(this);
+        tx1.setText("손익금액");
+        tx2.setText("매입총액");
+        tx3.setText("유가총액");
+        line1.addView(tx1);
+        line1.addView(tx2);
+        line1.addView(tx3);
+        tx1.setLayoutParams(txlp); tx1.setGravity(Gravity.CENTER);
+        tx2.setLayoutParams(txlp); tx2.setGravity(Gravity.CENTER);
+        tx3.setLayoutParams(txlp); tx3.setGravity(Gravity.CENTER);
+        LinearLayout line2 = new LinearLayout(this);
+        TextView val1 = new TextView(this);
+        TextView val2 = new TextView(this);
+        TextView val3 = new TextView(this);
+        val1.setText("55,378,655");
+        val2.setText("562,268,295");
+        val3.setText("617,646,950");
+        line2.addView(val1);
+        line2.addView(val2);
+        line2.addView(val3);
+        val1.setLayoutParams(txlp); val1.setGravity(Gravity.CENTER);
+        val2.setLayoutParams(txlp); val2.setGravity(Gravity.CENTER);
+        val3.setLayoutParams(txlp); val3.setGravity(Gravity.CENTER);
+        LinearLayout line3 = new LinearLayout(this);
+        TextView tx4 = new TextView(this);
+        TextView tx5 = new TextView(this);
+        TextView tx6 = new TextView(this);
+        tx4.setText("전일대비평가");
+        tx5.setText("당일실현손익");
+        tx6.setText("예수금");
+        tx4.setLayoutParams(txlp); tx4.setGravity(Gravity.CENTER);
+        tx5.setLayoutParams(txlp); tx5.setGravity(Gravity.CENTER);
+        tx6.setLayoutParams(txlp); tx6.setGravity(Gravity.CENTER);
+        line3.addView(tx4);line3.addView(tx5);line3.addView(tx6);
+        LinearLayout line4 = new LinearLayout(this);
+        TextView val4 = new TextView(this);
+        TextView val5 = new TextView(this);
+        TextView val6 = new TextView(this);
+        val4.setText("-8,311,056");
+        val5.setText("0");
+        val6.setText("8,817,249,539");
+        val4.setLayoutParams(txlp); val4.setGravity(Gravity.CENTER);
+        val5.setLayoutParams(txlp); val5.setGravity(Gravity.CENTER);
+        val6.setLayoutParams(txlp); val6.setGravity(Gravity.CENTER);
+        line4.addView(val4); line4.addView(val5); line4.addView(val6);
+
+        verll.addView(line1);
+        verll.addView(line2);
+        verll.addView(line3);
+        verll.addView(line4);
+        detail.addView(verll);
+
+
+        accLayout.addView(detail);
+
+
+        //baseLayout.addView(accLayout);
 
 
 
         //라인과 버튼
 
-
         TextView line = new TextView(this);
+
         line.setHeight((int) dpToPx(1));
         line.setBackgroundColor(Color.DKGRAY);
         accLayout.addView(line);
@@ -253,12 +360,18 @@ public class MainActivity extends AppCompatActivity {
         accLayout.setBackgroundResource(R.drawable.cardview);
         accLayout.setTop(200);
         baseLayout.addView(accLayout);
-
+        verll.setVisibility(View.GONE);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "상세보기", Toast.LENGTH_SHORT).show();
-               // accLayout.setVisibility(View.GONE);
+                int flag = verll.getVisibility();
+                if(flag == 0){ // 보이는 경우에는
+                    verll.setVisibility(View.GONE);
+                    btn.setText("상세보기");
+                }else if(flag == 8){ // 안보이는 경우에는
+                    verll.setVisibility(View.VISIBLE);
+                    btn.setText("접기");
+                }
             }
         });
 
