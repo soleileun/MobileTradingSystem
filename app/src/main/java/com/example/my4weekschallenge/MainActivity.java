@@ -2,29 +2,32 @@ package com.example.my4weekschallenge;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
-
 
 /*
 *
@@ -149,28 +152,89 @@ public class MainActivity extends AppCompatActivity {
         accLayout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams cardlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cardlp.setMargins(30,40,30,50);
-
         accLayout.setLayoutParams(cardlp);
         TextView tv = new TextView(this);
         LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
         tp.topMargin = (int) dpToPx(10.f); // 여기에 넣으니까 되네
         tv.setPadding(80,40,80,0); //
         tp.setMargins(20,30,20,20);
-//        tv.setBackgroundResource(R.drawable.cardview);
+//        tv.setBackgroundResource(R.drawable.cardview); //리소스를 어떻게 적용하는지
         tv.setBackgroundColor(Color.WHITE);
         tv.setPadding(10,10,10,10);
         tv.setGravity(Gravity.CENTER);
         tv.setText("ddddddd");
+
+        //스피너
+        Spinner sp = new Spinner(this);
+        String[] item = {"39002406-010","39002406-011","39002509-010"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = sp;
+        sItems.setAdapter(adapter);
+
+
+        //??
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
+
+        //패스워드입력
+        EditText pw = new EditText(this);
+        pw.setGravity(Gravity.CENTER);
+        pw.setFocusable(true);
+        pw.setEms(3);
+        pw.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+
+        pw.addTextChangedListener(new TextWatcher() {
+            String s;
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String s = charSequence.toString();
+                if(s.length() >4){
+                  //  pw.setBackgroundColor(Color.RED);
+                   // pw.clearFocus();
+                    pw.setText(charSequence.toString().subSequence(0,4));
+                }else if(s.length() == 4){
+                    pw.clearFocus();
+                    imm.hideSoftInputFromWindow(pw.getWindowToken(),0);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
+        });
+        sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,0.6f));
+        pw.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,0.3f));
+        LinearLayout ll = new LinearLayout(this);
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,1.0f);
+        llp.setMargins(50,30,50,30);
+        ll.setGravity(Gravity.CENTER);
+        ll.setLayoutParams(llp);
+        ll.setOrientation(LinearLayout.HORIZONTAL);
+        ll.addView(sp);
+        ll.addView(pw);
+        accLayout.addView(ll);
+
 //        tv.setBackgroundColor(Color.WHITE);
         tv.setLayoutParams(tp);
-        accLayout.addView(tv);
+     //   accLayout.addView(tv);
+
+
+
+
+
+        //라인과 버튼
 
 
         TextView line = new TextView(this);
         line.setHeight((int) dpToPx(1));
         line.setBackgroundColor(Color.DKGRAY);
         accLayout.addView(line);
-        accLayout.setId(123);
 
 
         //상세보기
@@ -194,11 +258,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "상세보기", Toast.LENGTH_SHORT).show();
-                accLayout.setVisibility(View.INVISIBLE);
+               // accLayout.setVisibility(View.GONE);
             }
         });
 
+
+
     // 셀을 만들어볼것인데 맘 처럼 잘 안됨 ㅠ
+
+
 
         LinearLayout bigLayout = new LinearLayout(this);
         bigLayout.setLayoutParams(new LinearLayout.LayoutParams(
@@ -254,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
         modLayout.addView(smLayout2);
         modLayout.addView(stBong);
         bigLayout.addView(modLayout);
-        baseLayout.addView(bigLayout);
+        //baseLayout.addView(bigLayout);
 
 
     }
