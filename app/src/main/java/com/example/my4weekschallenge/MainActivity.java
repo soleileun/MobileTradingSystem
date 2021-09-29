@@ -11,9 +11,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,14 +32,9 @@ import android.widget.Toolbar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.logging.Level;
+import org.w3c.dom.Text;
 
-/*
-*
-* this가 뭔가요?
-*
-*
-* */
+import java.util.logging.Level;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -154,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout accLayout = new LinearLayout(this);
         accLayout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams cardlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        cardlp.setMargins(30,40,30,50);
+        cardlp.setMargins(30,40,30,80);
         accLayout.setLayoutParams(cardlp);
         TextView tv = new TextView(this);
         LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
@@ -179,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //?? 키보드 제어하는 부분... 내가 키패드 내리고싶어서 어디서 주워온거임 ㅠㅠ
-
+        //키보드 부분도 나중에 정리
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
 
@@ -203,14 +200,18 @@ public class MainActivity extends AppCompatActivity {
                    // pw.clearFocus();
                     pw.setText(charSequence.toString().subSequence(0,4));
                 }else if(s.length() == 4){
-                    pw.clearFocus();
-                    imm.hideSoftInputFromWindow(pw.getWindowToken(),0);
+                    //pw.clearFocus();
+                   // imm.hideSoftInputFromWindow(pw.getWindowToken(),0);
+
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) { }
         });
+
+
+
         sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,0.6f));
         pw.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,0.3f));
         LinearLayout ll = new LinearLayout(this);
@@ -231,17 +232,26 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout detail = new LinearLayout(this);
         detail.setOrientation(LinearLayout.VERTICAL);
         LinearLayout jango = new LinearLayout(this);
+        LinearLayout.LayoutParams ss = new LinearLayout.LayoutParams(new LinearLayout.LayoutParams(0,0));
+
+        //물론이져 함수?
+        //wrapper class viewgroup??
+
         TextView money = new TextView(this);
         TextView won = new TextView(this);
         money.setText("9,434,896,489");
         money.setTextSize(30);
+        money.setPadding(30,20,30,20);
         won.setText("원");
         won.setTextSize(15);
         jango.addView(money);
         jango.addView(won);
         LinearLayout revPer = new LinearLayout(this);
+        revPer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
         TextView profit = new TextView(this);
         TextView pro =  new TextView(this);
+        revPer.setGravity(Gravity.BOTTOM);
+        revPer.setPadding(40,0,20,30);
         profit.setText("24.80");
         profit.setTextSize(15);
         if (Float.parseFloat(profit.getText().toString()) >0){
@@ -361,6 +371,8 @@ public class MainActivity extends AppCompatActivity {
         accLayout.setTop(200);
         baseLayout.addView(accLayout);
         verll.setVisibility(View.GONE);
+        btn.setClickable(false);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -375,67 +387,241 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        pw.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                // 텍스트 내용을 가져온다.
+                String searchData = textView.getText().toString();
+
+                // 텍스트 내용이 비어있다면...
+                if (searchData.length() <4) {
+
+                    // 토스트 메세지를 띄우고, 창 내용을 비운다
+                    Toast.makeText(MainActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+                    textView.clearFocus();
+                    textView.setFocusable(false);
+                    textView.setFocusableInTouchMode(true);
+                    textView.setFocusable(true);
+                    btn.setClickable(false);
+                    return true;
+                }
+
+                switch (i) {
+
+                    // Search 버튼일경우
+                    case EditorInfo.IME_ACTION_SEARCH:
+
+                        break;
+
+                    // Enter 버튼일경우
+                    default:
+
+                        btn.setClickable(true);
+
+                        return false;
+                }
+
+                // 내용 비우고 다시 이벤트 할수있게 선택
+                textView.clearFocus();
+                textView.setFocusable(false);
+                textView.setText("");
+                textView.setFocusableInTouchMode(true);
+                textView.setFocusable(true);
+
+                return true;
+
+
+            }
+        });
 
 
     // 셀을 만들어볼것인데 맘 처럼 잘 안됨 ㅠ
+//        LinearLayout bigLayout = new LinearLayout(this);
+//        bigLayout.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+//
+//        LinearLayout modLayout = new LinearLayout(this);
+//        LinearLayout smLayout = new LinearLayout(this);
+//        LinearLayout smLayout2 = new LinearLayout(this);
+//        LinearLayout firLayout = new LinearLayout(this);
+//        firLayout.setPadding(50,0,10,0);
+//        TextView stName = new TextView(this);
+//        LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        stName.setText("SK하이닉스");
+//        //stName.setPadding(20,10,0,10);
+//        stName.setTextSize(24);
+//        stName.setLayoutParams(tlp);
+//        TextView stNum = new TextView(this);
+//        stNum.setText("155,234");
+//        stNum.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+//      //  stNum.setPadding(20,0,0,0);
+//        TextView stMemo = new TextView(this);
+//        stMemo.setText("15");
+//        stMemo.setPadding(10,0,10,0);
+//        stMemo.setBackgroundColor(Color.GREEN);
+//        smLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1));
+//
+//        LinearLayout pl = new LinearLayout(this);
+//        pl.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
+//        pl.setPadding(0,0,20,0);
+//        Log.d("eun", String.valueOf(pl.getWeightSum()));
+//
+//        TextView stPrice = new TextView(this);
+//        stPrice.setBackgroundColor(Color.RED);
+//        LinearLayout.LayoutParams plp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        stPrice.setText("99,000");
+//
+//        stPrice.setTextSize(30);
+//        stPrice.setLayoutParams(plp);
+//        stPrice.setGravity(Gravity.END|Gravity.CENTER);
+//        pl.addView(stPrice);
+//
+//        LinearLayout.LayoutParams nlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        TextView stArrow = new TextView(this);
+//        stArrow.setBackgroundColor(Color.BLUE);
+//        stArrow.setText("UP");
+//        stArrow.setGravity(Gravity.CENTER);
+//        stArrow.setLayoutParams(nlp);
+//        stArrow.setHeight(250);
+//
+//
+//        LinearLayout.LayoutParams nnlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1f);
+//        TextView stDiff = new TextView(this);
+//        stDiff.setText("3,700");
+//
+//        stDiff.setLayoutParams(nnlp);
+//        stDiff.setGravity(Gravity.CENTER);
+//        TextView stPer = new TextView(this);
+//        stPer.setText("3.26%");
+//        stPer.setGravity(Gravity.CENTER);
+//        stPer.setBackgroundColor(Color.DKGRAY);
+//        stPer.setLayoutParams(nnlp);
+//        smLayout2.setOrientation(LinearLayout.VERTICAL);
+//        smLayout2.addView(stDiff);
+//        smLayout2.addView(stPer);
+//
+//        TextView stBong = new TextView(this);
+//        stBong.setBackgroundColor(Color.GREEN);
+//        stBong.setLayoutParams(nlp);
+//        stBong.setGravity(Gravity.CENTER);
+//        stBong.setText(" | ");
+//        stBong.setPadding(0,0,20,0);
+//
+//
+//
+//        smLayout.addView(stNum);
+//        smLayout.addView(stMemo);
+//        firLayout.setOrientation(LinearLayout.VERTICAL);
+//        firLayout.addView(stName);
+//        firLayout.addView(smLayout);
+//
+//        modLayout.addView(firLayout);
+//        modLayout.addView(pl);
+//        modLayout.addView(stArrow);
+//        modLayout.addView(smLayout2);
+//        modLayout.addView(stBong);
+////        bigLayout.addView(modLayout);
+//        modLayout.setPadding(0,0,50,0);
+//        baseLayout.addView(modLayout);
 
 
+        LinearLayout tl = new LinearLayout(this);
+        LinearLayout b1 = new LinearLayout(this);
+        b1.setBackgroundColor(Color.BLUE);
 
-        LinearLayout bigLayout = new LinearLayout(this);
-        bigLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        LinearLayout modLayout = new LinearLayout(this);
-        LinearLayout smLayout = new LinearLayout(this);
-        LinearLayout smLayout2 = new LinearLayout(this);
-        LinearLayout firLayout = new LinearLayout(this);
-        Button stName = new Button(this);
-        stName.setBackgroundColor(Color.BLACK);
+        TextView stName = new TextView(this);
+        stName.setText("SK하이닉스");
+        stName.setTextSize(24);
         TextView stNum = new TextView(this);
         stNum.setText("155,234");
-        stNum.setBackgroundColor(Color.YELLOW);
         TextView stMemo = new TextView(this);
-        stMemo.setText("시세 ");
+        stMemo.setText("15");
         stMemo.setBackgroundColor(Color.GREEN);
+        stMemo.setGravity(Gravity.END);
+        stMemo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        LinearLayout fl1 = new LinearLayout(this);
+        LinearLayout fl2 = new LinearLayout(this);
+        b1.setOrientation(LinearLayout.VERTICAL);
+        fl2.addView(stNum);
+        fl2.addView(stMemo);
+        b1.addView(stName);
+        b1.addView(fl2);
+        b1.setPadding(50,0,0,0);
+        b1.setLayoutParams(new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,1.2f));
+        tl.addView(b1);
 
-        Button stPrice = new Button(this);
-        stPrice.setBackgroundColor(Color.RED);
-        stPrice.setHeight(260);
 
-        Button stArrow = new Button(this);
+        LinearLayout b2 = new LinearLayout(this);
+        b2.setBackgroundColor(Color.RED);
+        b2.setLayoutParams(new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
+
+
+        TextView stPrice = new TextView(this);
+        stPrice.setBackgroundColor(Color.WHITE);
+        LinearLayout.LayoutParams plp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        stPrice.setText("99,000");
+
+        stPrice.setTextSize(30);
+        stPrice.setLayoutParams(plp);
+        stPrice.setGravity(Gravity.END);
+        b2.setGravity(Gravity.END
+        );
+        b2.addView(stPrice);
+        LinearLayout.LayoutParams nlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        TextView stArrow = new TextView(this);
         stArrow.setBackgroundColor(Color.BLUE);
         stArrow.setText("UP");
-        stArrow.setHeight(250);
+        stArrow.setGravity(Gravity.CENTER);
+        stArrow.setLayoutParams(nlp);
 
+        tl.addView(b2);
 
+        LinearLayout b3 = new LinearLayout(this);
+        b3.setBackgroundColor(Color.CYAN);
+        b3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        b3.addView(stArrow);
+        tl.addView(b3);
 
-        Button stDiff = new Button(this);
-        stDiff.setText("stDiff");
-        Button stPer = new Button(this);
-        stPer.setText("%");
-        smLayout2.setOrientation(LinearLayout.VERTICAL);
-        smLayout2.addView(stDiff);
-        smLayout2.addView(stPer);
-
-        Button stBong = new Button(this);
+        TextView stDiff = new TextView(this);
+        stDiff.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
+        stDiff.setGravity(Gravity.CENTER_VERTICAL);
+        stDiff.setBackgroundColor(Color.DKGRAY);
+        stDiff.setText("3,700");
+        TextView stPer = new TextView(this);
+        stPer.setText("3.26%");
+        stPer.setGravity(Gravity.CENTER_VERTICAL);
+        stPer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
+        LinearLayout sl2 = new LinearLayout(this);
+        sl2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        sl2.setOrientation(LinearLayout.VERTICAL);
+        sl2.setGravity(Gravity.CENTER_VERTICAL);
+        sl2.addView(stDiff);
+        sl2.addView(stPer);
+        b3.setGravity(Gravity.CENTER_VERTICAL);
+        b3.addView(sl2);
+//
+        TextView stBong = new TextView(this);
         stBong.setBackgroundColor(Color.GREEN);
-        stBong.setText("df");
+//        stBong.setLayoutParams(nlp);
+        stBong.setGravity(Gravity.CENTER);
+        stBong.setText(" | ");
+        stBong.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        stBong.setPadding(10,0,50,0);
+        b3.addView(stBong);
 
 
+        baseLayout.addView(tl);
 
-        smLayout.addView(stNum);
-        smLayout.addView(stMemo);
-        firLayout.setOrientation(LinearLayout.VERTICAL);
-        firLayout.addView(stName);
-        firLayout.addView(smLayout);
-
-        modLayout.addView(firLayout);
-        modLayout.addView(stPrice);
-        modLayout.addView(stArrow);
-        modLayout.addView(smLayout2);
-        modLayout.addView(stBong);
-        bigLayout.addView(modLayout);
-        //baseLayout.addView(bigLayout);
+        LinearLayout n1 = new LinearLayout(this);
+        TextView tt = new TextView(this);
+        tt.setText("aa");
+        tt.setBackgroundColor(Color.RED);
+        TextView ttt = new TextView(this);
+        ttt.setText("ttt");
+        ttt.setBackgroundColor(Color.YELLOW);
+        n1.setOrientation(LinearLayout.VERTICAL);
+        n1.addView(tt);n1.addView(ttt);
+//        baseLayout.addView(n1);
 
 
     }
@@ -474,10 +660,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-
     public float dpToPx(float dp){
         float px =  TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, dp,
