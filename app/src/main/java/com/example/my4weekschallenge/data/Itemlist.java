@@ -6,16 +6,14 @@ public class Itemlist {
     String price;
     String diff;
     String percent;
-    String color;
     String arrow;
 
-    public Itemlist(String name, String tradeNum, String price, String diff, String percent, String color, String arrow) {
+    public Itemlist(String name, String tradeNum, String price, String diff, String percent, String arrow) {
         this.name = name;
         this.tradeNum = tradeNum;
         this.price = price;
         this.diff = diff;
         this.percent = percent;
-        this.color = color;
         this.arrow = arrow;
     }
 
@@ -59,14 +57,6 @@ public class Itemlist {
         this.percent = percent;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getArrow() {
         return arrow;
     }
@@ -83,7 +73,6 @@ public class Itemlist {
                 ", price='" + price + '\'' +
                 ", diff='" + diff + '\'' +
                 ", percent='" + percent + '\'' +
-                ", color='" + color + '\'' +
                 ", arrow='" + arrow + '\'' +
                 '}';
     }

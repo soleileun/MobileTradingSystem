@@ -49,21 +49,21 @@ public class Week1Activity extends AppCompatActivity {
         adapter = new GridViewAdapter();
 
         //Adapter 안에 아이템의 정보 담기
-        adapter.addItem(new Itemlist("SK하이닉스", "1,437,371", "106,000","1,500","1.45%","red","up"));
-        adapter.addItem(new Itemlist("현대차", "478,404", "205,000","3,200","4.45%","blue","down"));
-        adapter.addItem(new Itemlist("하나금융지주", "1,111", "46,000","15,000","4.60%","red","up"));
-        adapter.addItem(new Itemlist("NAVER", "2,321", "405,000","2,000","1.25%","blue","down"));
-        adapter.addItem(new Itemlist("POSCO", "132,811", "373,000","13,000","2,25%","red","up"));
-        adapter.addItem(new Itemlist("CJ제일제당", "8,011", "22,200","7,100","3.40%","red","up"));
-        adapter.addItem(new Itemlist("LG화학", "2,327", "23,100","1,150","1,90%","red","up"));
-        adapter.addItem(new Itemlist("기아", "11", "123,700","3,000","0.45%","blue","down"));
-        adapter.addItem(new Itemlist("현대모비스", "3,232,111", "60,000","13,600","17.45%","blue","down"));
-        adapter.addItem(new Itemlist("삼성생명", "20,665", "78,000","3,000","9.50%","red","up"));
-        adapter.addItem(new Itemlist("BYC", "45,467", "12,800","400","11.00%","red","up"));
-        adapter.addItem(new Itemlist("대한항공", "1,112", "7,310","950","8.45%","blue","down"));
-        adapter.addItem(new Itemlist("삼성전자", "7,423", "10,100","2,400","4.00%","red","up"));
-        adapter.addItem(new Itemlist("판타지오", "1,764", "103","2","0.15%","red","up"));
-        adapter.addItem(new Itemlist("신한금융지주 ", "3,632,188", "79,000","5,000","4.45%","red","up"));
+//        adapter.addItem(new Itemlist("SK하이닉스", "1,437,371", "106,000","1,500","1.45%","red","up"));
+//        adapter.addItem(new Itemlist("현대차", "478,404", "205,000","3,200","4.45%","blue","down"));
+//        adapter.addItem(new Itemlist("하나금융지주", "1,111", "46,000","15,000","4.60%","red","up"));
+//        adapter.addItem(new Itemlist("NAVER", "2,321", "405,000","2,000","1.25%","blue","down"));
+//        adapter.addItem(new Itemlist("POSCO", "132,811", "373,000","13,000","2,25%","red","up"));
+//        adapter.addItem(new Itemlist("CJ제일제당", "8,011", "22,200","7,100","3.40%","red","up"));
+//        adapter.addItem(new Itemlist("LG화학", "2,327", "23,100","1,150","1,90%","red","up"));
+//        adapter.addItem(new Itemlist("기아", "11", "123,700","3,000","0.45%","blue","down"));
+//        adapter.addItem(new Itemlist("현대모비스", "3,232,111", "60,000","13,600","17.45%","blue","down"));
+//        adapter.addItem(new Itemlist("삼성생명", "20,665", "78,000","3,000","9.50%","red","up"));
+//        adapter.addItem(new Itemlist("BYC", "45,467", "12,800","400","11.00%","red","up"));
+//        adapter.addItem(new Itemlist("대한항공", "1,112", "7,310","950","8.45%","blue","down"));
+//        adapter.addItem(new Itemlist("삼성전자", "7,423", "10,100","2,400","4.00%","red","up"));
+//        adapter.addItem(new Itemlist("판타지오", "1,764", "103","2","0.15%","red","up"));
+//        adapter.addItem(new Itemlist("신한금융지a주 ", "3,632,188", "79,000","5,000","4.45%","red","up"));
 
         gridview.setAdapter(adapter);
 

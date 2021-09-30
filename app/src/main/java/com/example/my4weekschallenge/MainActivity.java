@@ -1,7 +1,10 @@
 package com.example.my4weekschallenge;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,12 +36,20 @@ import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.my4weekschallenge.adapter.CellAdapter;
 import com.example.my4weekschallenge.data.Itemlist;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -50,8 +61,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 //        setContentView(R.layout.activity_main); // activity_main.xml로 화면을 표시한다 하지만 안할거니까!
         //반면, 레이아웃 파라미터 종류는 위젯이 아니라 소속되어 있는 부모 레이아웃에 따라 달라진다.
+
+
+
 
         //레이아웃 파라미터 객체 생성
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -88,9 +103,6 @@ public class MainActivity extends AppCompatActivity {
         btnlayout.addView(btn1);
         Button btn2 = new Button(this);
         btn2.setText("환경설정");
-//        btn2.setLayoutParams(lp);
-        //toolbar.addView(btn2);
-        // btnlayout.setGravity(Gravity.END|Gravity.RIGHT);
         btnlayout.addView(btn2);
         toolbar.addView(btnlayout);
 
@@ -344,10 +356,6 @@ public class MainActivity extends AppCompatActivity {
         accLayout.addView(detail);
 
 
-        //baseLayout.addView(accLayout);
-
-
-
         //라인과 버튼
 
         TextView line = new TextView(this);
@@ -438,17 +446,12 @@ public class MainActivity extends AppCompatActivity {
 
 //        baseLayout.addView(new StockCell(this));
 
-        ArrayList<Itemlist> ai = new ArrayList<>();
-        ai.add(new Itemlist("dd","ff","4040","aa","ff","zz","up"));
-        ai.add(new Itemlist("dd0092u72","ff","4040","aa","ff","zz","down"));
+        ArrayList<Itemlist> ai = loadItemsFromFile();
 
         CellAdapter cellAdapter = new CellAdapter(ai);
         ListView lv = new ListView(this);
         lv.setAdapter(cellAdapter);
         baseLayout.addView(lv);
-
-
-
 
 
     }
@@ -492,6 +495,45 @@ public class MainActivity extends AppCompatActivity {
                 TypedValue.COMPLEX_UNIT_DIP, dp,
                 this.getResources().getDisplayMetrics());
         return px;
+    }
+    private ArrayList<Itemlist> loadItemsFromFile() {
+
+        AssetManager am = getAssets();
+//        AssetManager am = getResources().getAssets() ;
+        ArrayList<Itemlist> items = new ArrayList<>();
+        InputStream is = null;
+        byte buf[] = new byte[1024];
+        String text = "";
+
+        try {
+            is = am.open("stock.txt");
+
+            if (is.read(buf) > 0) {
+                text = new String(buf);
+            }
+            String[] str = text.split("\n");
+            for(int i=0;i<str.length;i++){
+                String[] s = str[i].split("\\|");
+                items.add(new Itemlist(s[0],s[1],s[2],s[3],s[4],s[5]));
+                Log.d("plz",s[0] + "OK");
+            }
+
+            Log.d("plz", String.valueOf(str.length));
+
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (is != null) {
+            try {
+                is.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return items;
     }
 
 
