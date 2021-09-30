@@ -74,5 +74,18 @@ public class Itemlist {
     public void setArrow(String arrow) {
         this.arrow = arrow;
     }
+
+    @Override
+    public String toString() {
+        return "Itemlist{" +
+                "name='" + name + '\'' +
+                ", tradeNum='" + tradeNum + '\'' +
+                ", price='" + price + '\'' +
+                ", diff='" + diff + '\'' +
+                ", percent='" + percent + '\'' +
+                ", color='" + color + '\'' +
+                ", arrow='" + arrow + '\'' +
+                '}';
+    }
 }
 

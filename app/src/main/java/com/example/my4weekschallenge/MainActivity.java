@@ -19,10 +19,12 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -32,8 +34,13 @@ import android.widget.Toolbar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.my4weekschallenge.adapter.CellAdapter;
+import com.example.my4weekschallenge.data.Itemlist;
+
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class MainActivity extends AppCompatActivity {
@@ -211,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         sp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,0.6f));
         pw.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,0.3f));
         LinearLayout ll = new LinearLayout(this);
@@ -222,11 +228,8 @@ public class MainActivity extends AppCompatActivity {
         ll.setOrientation(LinearLayout.HORIZONTAL);
         ll.addView(sp);
         ll.addView(pw);
-       // accLayout.addView(ll);
 
-//        tv.setBackgroundColor(Color.WHITE);
         tv.setLayoutParams(tp);
-     //   accLayout.addView(tv);
 
         //잔고 카드
         LinearLayout detail = new LinearLayout(this);
@@ -357,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
         //상세보기
         TextView btn = new TextView(this);
         btn.setText("상세보기");
-
+        btn.setClickable(false);
         btn.setBackgroundColor(Color.WHITE);
         LinearLayout.LayoutParams dell = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         dell.setMargins(10,10,10,10);
@@ -371,7 +374,6 @@ public class MainActivity extends AppCompatActivity {
         accLayout.setTop(200);
         baseLayout.addView(accLayout);
         verll.setVisibility(View.GONE);
-        btn.setClickable(false);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -434,194 +436,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        baseLayout.addView(new StockCell(this));
 
-    // 셀을 만들어볼것인데 맘 처럼 잘 안됨 ㅠ
-//        LinearLayout bigLayout = new LinearLayout(this);
-//        bigLayout.setLayoutParams(new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//
-//        LinearLayout modLayout = new LinearLayout(this);
-//        LinearLayout smLayout = new LinearLayout(this);
-//        LinearLayout smLayout2 = new LinearLayout(this);
-//        LinearLayout firLayout = new LinearLayout(this);
-//        firLayout.setPadding(50,0,10,0);
-//        TextView stName = new TextView(this);
-//        LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        stName.setText("SK하이닉스");
-//        //stName.setPadding(20,10,0,10);
-//        stName.setTextSize(24);
-//        stName.setLayoutParams(tlp);
-//        TextView stNum = new TextView(this);
-//        stNum.setText("155,234");
-//        stNum.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
-//      //  stNum.setPadding(20,0,0,0);
-//        TextView stMemo = new TextView(this);
-//        stMemo.setText("15");
-//        stMemo.setPadding(10,0,10,0);
-//        stMemo.setBackgroundColor(Color.GREEN);
-//        smLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1));
-//
-//        LinearLayout pl = new LinearLayout(this);
-//        pl.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
-//        pl.setPadding(0,0,20,0);
-//        Log.d("eun", String.valueOf(pl.getWeightSum()));
-//
-//        TextView stPrice = new TextView(this);
-//        stPrice.setBackgroundColor(Color.RED);
-//        LinearLayout.LayoutParams plp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//        stPrice.setText("99,000");
-//
-//        stPrice.setTextSize(30);
-//        stPrice.setLayoutParams(plp);
-//        stPrice.setGravity(Gravity.END|Gravity.CENTER);
-//        pl.addView(stPrice);
-//
-//        LinearLayout.LayoutParams nlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//        TextView stArrow = new TextView(this);
-//        stArrow.setBackgroundColor(Color.BLUE);
-//        stArrow.setText("UP");
-//        stArrow.setGravity(Gravity.CENTER);
-//        stArrow.setLayoutParams(nlp);
-//        stArrow.setHeight(250);
-//
-//
-//        LinearLayout.LayoutParams nnlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1f);
-//        TextView stDiff = new TextView(this);
-//        stDiff.setText("3,700");
-//
-//        stDiff.setLayoutParams(nnlp);
-//        stDiff.setGravity(Gravity.CENTER);
-//        TextView stPer = new TextView(this);
-//        stPer.setText("3.26%");
-//        stPer.setGravity(Gravity.CENTER);
-//        stPer.setBackgroundColor(Color.DKGRAY);
-//        stPer.setLayoutParams(nnlp);
-//        smLayout2.setOrientation(LinearLayout.VERTICAL);
-//        smLayout2.addView(stDiff);
-//        smLayout2.addView(stPer);
-//
-//        TextView stBong = new TextView(this);
-//        stBong.setBackgroundColor(Color.GREEN);
-//        stBong.setLayoutParams(nlp);
-//        stBong.setGravity(Gravity.CENTER);
-//        stBong.setText(" | ");
-//        stBong.setPadding(0,0,20,0);
-//
-//
-//
-//        smLayout.addView(stNum);
-//        smLayout.addView(stMemo);
-//        firLayout.setOrientation(LinearLayout.VERTICAL);
-//        firLayout.addView(stName);
-//        firLayout.addView(smLayout);
-//
-//        modLayout.addView(firLayout);
-//        modLayout.addView(pl);
-//        modLayout.addView(stArrow);
-//        modLayout.addView(smLayout2);
-//        modLayout.addView(stBong);
-////        bigLayout.addView(modLayout);
-//        modLayout.setPadding(0,0,50,0);
-//        baseLayout.addView(modLayout);
+        ArrayList<Itemlist> ai = new ArrayList<>();
+        ai.add(new Itemlist("dd","ff","4040","aa","ff","zz","up"));
+        ai.add(new Itemlist("dd0092u72","ff","4040","aa","ff","zz","down"));
+
+        CellAdapter cellAdapter = new CellAdapter(ai);
+        ListView lv = new ListView(this);
+        lv.setAdapter(cellAdapter);
+        baseLayout.addView(lv);
 
 
-        LinearLayout tl = new LinearLayout(this);
-        LinearLayout b1 = new LinearLayout(this);
-        b1.setBackgroundColor(Color.BLUE);
 
-        TextView stName = new TextView(this);
-        stName.setText("SK하이닉스");
-        stName.setTextSize(24);
-        TextView stNum = new TextView(this);
-        stNum.setText("155,234");
-        TextView stMemo = new TextView(this);
-        stMemo.setText("15");
-        stMemo.setBackgroundColor(Color.GREEN);
-        stMemo.setGravity(Gravity.END);
-        stMemo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
-        LinearLayout fl1 = new LinearLayout(this);
-        LinearLayout fl2 = new LinearLayout(this);
-        b1.setOrientation(LinearLayout.VERTICAL);
-        fl2.addView(stNum);
-        fl2.addView(stMemo);
-        b1.addView(stName);
-        b1.addView(fl2);
-        b1.setPadding(50,0,0,0);
-        b1.setLayoutParams(new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,1.2f));
-        tl.addView(b1);
-
-
-        LinearLayout b2 = new LinearLayout(this);
-        b2.setBackgroundColor(Color.RED);
-        b2.setLayoutParams(new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
-
-
-        TextView stPrice = new TextView(this);
-        stPrice.setBackgroundColor(Color.WHITE);
-        LinearLayout.LayoutParams plp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        stPrice.setText("99,000");
-
-        stPrice.setTextSize(30);
-        stPrice.setLayoutParams(plp);
-        stPrice.setGravity(Gravity.END);
-        b2.setGravity(Gravity.END
-        );
-        b2.addView(stPrice);
-        LinearLayout.LayoutParams nlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        TextView stArrow = new TextView(this);
-        stArrow.setBackgroundColor(Color.BLUE);
-        stArrow.setText("UP");
-        stArrow.setGravity(Gravity.CENTER);
-        stArrow.setLayoutParams(nlp);
-
-        tl.addView(b2);
-
-        LinearLayout b3 = new LinearLayout(this);
-        b3.setBackgroundColor(Color.CYAN);
-        b3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
-        b3.addView(stArrow);
-        tl.addView(b3);
-
-        TextView stDiff = new TextView(this);
-        stDiff.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
-        stDiff.setGravity(Gravity.CENTER_VERTICAL);
-        stDiff.setBackgroundColor(Color.DKGRAY);
-        stDiff.setText("3,700");
-        TextView stPer = new TextView(this);
-        stPer.setText("3.26%");
-        stPer.setGravity(Gravity.CENTER_VERTICAL);
-        stPer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
-        LinearLayout sl2 = new LinearLayout(this);
-        sl2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
-        sl2.setOrientation(LinearLayout.VERTICAL);
-        sl2.setGravity(Gravity.CENTER_VERTICAL);
-        sl2.addView(stDiff);
-        sl2.addView(stPer);
-        b3.setGravity(Gravity.CENTER_VERTICAL);
-        b3.addView(sl2);
-//
-        TextView stBong = new TextView(this);
-        stBong.setBackgroundColor(Color.GREEN);
-//        stBong.setLayoutParams(nlp);
-        stBong.setGravity(Gravity.CENTER);
-        stBong.setText(" | ");
-        stBong.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        stBong.setPadding(10,0,50,0);
-        b3.addView(stBong);
-
-
-        baseLayout.addView(tl);
-
-        LinearLayout n1 = new LinearLayout(this);
-        TextView tt = new TextView(this);
-        tt.setText("aa");
-        tt.setBackgroundColor(Color.RED);
-        TextView ttt = new TextView(this);
-        ttt.setText("ttt");
-        ttt.setBackgroundColor(Color.YELLOW);
-        n1.setOrientation(LinearLayout.VERTICAL);
-        n1.addView(tt);n1.addView(ttt);
-//        baseLayout.addView(n1);
 
 
     }
@@ -666,9 +493,6 @@ public class MainActivity extends AppCompatActivity {
                 this.getResources().getDisplayMetrics());
         return px;
     }
-
-
-
 
 
 }
