@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:drawable="@drawable/splash"/>
-    <Text>
-        나만의 MTS 만들기
-    </Text>
+    <item android:drawable="@android:color/background_light" />
+    <item>
+        <bitmap
+            android:src="@drawable/solarr"
+            android:gravity="center"/>
+    </item>
+
 </layer-list>
