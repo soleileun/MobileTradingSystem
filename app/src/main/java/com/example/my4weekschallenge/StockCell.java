@@ -5,11 +5,13 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -23,8 +25,11 @@ public class StockCell extends LinearLayout {
 
     Itemlist item;
 
+    public void setItem(Itemlist item) {
+        this.item = item;
+    }
 
-    public StockCell(Context context,Itemlist item) {
+    public StockCell(Context context, Itemlist item) {
         super(context);
         this.item = item;
         init();
@@ -130,8 +135,6 @@ public class StockCell extends LinearLayout {
 
         if(item.getArrow().toLowerCase().equals("up")){
             stArrow.setText("▲");
-          //  stName.setTextColor(Color.RED);
-          //  stNum.setTextColor(Color.RED);
             stDiff.setTextColor(Color.RED);
             stArrow.setTextColor(Color.RED);
             stPrice.setTextColor(Color.RED);
@@ -139,27 +142,16 @@ public class StockCell extends LinearLayout {
 
         }else if(item.getArrow().toLowerCase().equals("down")){
             stArrow.setText("▼");
-          //  stName.setTextColor(Color.BLUE);
-          //  stNum.setTextColor(Color.BLUE);
-            stDiff.setTextColor(Color.BLUE);
+             stDiff.setTextColor(Color.BLUE);
             stArrow.setTextColor(Color.BLUE);
             stPrice.setTextColor(Color.BLUE);
             stPer.setTextColor(Color.BLUE);
 
         }
 
-
-
         addView(tl);
 
     }
-
-    public void setColor(){
-
-    }
-
-
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.my4weekschallenge;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -23,10 +24,13 @@ public class DarkButtomBtn extends androidx.appcompat.widget.AppCompatButton {
         super(context, attrs);
     }
 
+    @SuppressLint("ResourceType")
     public void init(){
         setText(text);
-        setBackgroundResource(R.drawable.bottom_button);
+        setBackgroundResource(Color.TRANSPARENT);
         setTextColor(Color.LTGRAY);
+        setHeight(160);
+
     }
 
 }

@@ -62,11 +62,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        setContentView(R.layout.activity_main); // activity_main.xml로 화면을 표시한다 하지만 안할거니까!
+        // setContentView(R.layout.activity_main);
+        // activity_main.xml로 화면을 표시한다 하지만 안할거니까!
         //반면, 레이아웃 파라미터 종류는 위젯이 아니라 소속되어 있는 부모 레이아웃에 따라 달라진다.
-
-
-
 
         //레이아웃 파라미터 객체 생성
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -91,19 +89,19 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
         //actionBar.setDisplayShowCustomEnabled(true); // 커스터마이징
-        //  toolbar.inflateMenu(R.menu.cstoolbar); // 서랍 아이콘으로 하는 방법
+        //toolbar.inflateMenu(R.menu.cstoolbar); // 서랍 아이콘으로 하는 방법
 
         LinearLayout btnlayout = new LinearLayout(this);
         //이렇게 해야 좌측으로 배치가능 나를 누구 기준으로 배치할거냐 생각을 해보면 됨
         btnlayout.setLayoutParams(new ActionBar.LayoutParams(
                         ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
                 ));
-        Button btn1 = new Button(this);
-        btn1.setText("검색");
-        btnlayout.addView(btn1);
-        Button btn2 = new Button(this);
-        btn2.setText("환경설정");
-        btnlayout.addView(btn2);
+        Button search = new Button(this);
+        search.setText("검색");
+        btnlayout.addView(search);
+        Button setting = new Button(this);
+        setting.setText("환경설정");
+        btnlayout.addView(setting);
         toolbar.addView(btnlayout);
 
 
@@ -122,24 +120,20 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT,140));
 
         HorizontalScrollView horizontalScrollView = new HorizontalScrollView(this);
-        horizontalScrollView.setBackgroundColor(Color.WHITE);
+//        horizontalScrollView.setBackgroundColor(Color.WHITE);
+//        horizontalScrollView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY); //기본값 ~
+        horizontalScrollView.setHorizontalScrollBarEnabled(false); //스크롤바 없애는 옵션
         horizontalScrollView.setLayoutParams(new LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
-
+        horizontalScrollView.setPadding(20,0,0,0);
         LinearLayout hscrollBtnLayout = new LinearLayout(this);
         hscrollBtnLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,140));
         hscrollBtnLayout.setOrientation(LinearLayout.HORIZONTAL);
-        Button scrollBtn1 = new Button(this);
-        scrollBtn1.setText("최근조회종목");
-        scrollBtn1.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
-        Button scrollBtn2 = new Button(this);
-        scrollBtn2.setText("보유종목(국내)");
-        Button scrollBtn3 = new Button(this);
-        scrollBtn3.setText("보유종목(해외)");
-        Button scrollBtn4 = new Button(this);
-        scrollBtn4.setText("특징종목");
-        Button scrollBtn5 = new Button(this);
-        scrollBtn5.setText("기본그룹");
+        RoundButton scrollBtn1 = new RoundButton(this,"최근조회종목");
+        RoundButton scrollBtn2 = new RoundButton(this,"보유종목(국내)");
+        RoundButton scrollBtn3 = new RoundButton(this,"보유종목(해외)");
+        RoundButton scrollBtn4 = new RoundButton(this,"특징종목");
+        RoundButton scrollBtn5 = new RoundButton(this,"기본그룹");
 
         hscrollBtnLayout.addView(scrollBtn1);
         hscrollBtnLayout.addView(scrollBtn2);
@@ -153,18 +147,15 @@ public class MainActivity extends AppCompatActivity {
         //수평 스크롤 옆 X 버튼
         LinearLayout btnXLayout = new LinearLayout(this);
         btnXLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
+                160,
                 LinearLayout.LayoutParams.MATCH_PARENT));
         Button btnX = new Button(this);
         btnXLayout.setGravity(Gravity.END);
         btnX.setText("X");
         btnXLayout.addView(btnX);
-
+        btnX.setBackgroundColor(Color.WHITE);
         scrollLayout.addView(btnXLayout);
         baseLayout.addView(scrollLayout);
-
-//        View card = new View(this);
-//        card.setBackgroundColor(Color.CYAN);
 
         // 상세보기 부분 구현
         LinearLayout accLayout = new LinearLayout(this);
@@ -172,16 +163,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams cardlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cardlp.setMargins(30,40,30,80);
         accLayout.setLayoutParams(cardlp);
-        TextView tv = new TextView(this);
         LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
         tp.topMargin = (int) dpToPx(10.f); // 여기에 넣으니까 되네
-        tv.setPadding(80,40,80,0); //
         tp.setMargins(20,30,20,20);
-//        tv.setBackgroundResource(R.drawable.cardview); //리소스를 어떻게 적용하는지
-        tv.setBackgroundColor(Color.WHITE);
-        tv.setPadding(10,10,10,10);
-        tv.setGravity(Gravity.CENTER);
-        tv.setText("ddddddd");
 
         //스피너
         Spinner sp = new Spinner(this);
@@ -201,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
         //패스워드입력
         EditText pw = new EditText(this);
+        pw.setBackgroundResource(R.drawable.button);
         pw.setGravity(Gravity.CENTER);
         pw.setFocusable(true);
         pw.setEms(3);
@@ -241,16 +226,11 @@ public class MainActivity extends AppCompatActivity {
         ll.addView(sp);
         ll.addView(pw);
 
-        tv.setLayoutParams(tp);
-
         //잔고 카드
         LinearLayout detail = new LinearLayout(this);
         detail.setOrientation(LinearLayout.VERTICAL);
         LinearLayout jango = new LinearLayout(this);
         LinearLayout.LayoutParams ss = new LinearLayout.LayoutParams(new LinearLayout.LayoutParams(0,0));
-
-        //물론이져 함수?
-        //wrapper class viewgroup??
 
         TextView money = new TextView(this);
         TextView won = new TextView(this);
@@ -269,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
         revPer.setPadding(40,0,20,30);
         profit.setText("24.80");
         profit.setTextSize(15);
+
         if (Float.parseFloat(profit.getText().toString()) >0){
             profit.setTextColor(Color.RED);
         }else{
@@ -286,7 +267,6 @@ public class MainActivity extends AppCompatActivity {
         dll.addView(jango);
         dll.addView(revPer);
         verll.setOrientation(LinearLayout.VERTICAL);
-        //verll.addView(ll);
         detail.addView(ll);
         verll.addView(dll);
 
@@ -301,12 +281,9 @@ public class MainActivity extends AppCompatActivity {
         TextView tx1 = new TextView(this);
         TextView tx2 = new TextView(this);
         TextView tx3 = new TextView(this);
-        tx1.setText("손익금액");
-        tx2.setText("매입총액");
-        tx3.setText("유가총액");
-        line1.addView(tx1);
-        line1.addView(tx2);
-        line1.addView(tx3);
+        tx1.setText("손익금액"); line1.addView(tx1);
+        tx2.setText("매입총액"); line1.addView(tx2);
+        tx3.setText("유가총액");line1.addView(tx3);
         tx1.setLayoutParams(txlp); tx1.setGravity(Gravity.CENTER);
         tx2.setLayoutParams(txlp); tx2.setGravity(Gravity.CENTER);
         tx3.setLayoutParams(txlp); tx3.setGravity(Gravity.CENTER);
@@ -314,12 +291,9 @@ public class MainActivity extends AppCompatActivity {
         TextView val1 = new TextView(this);
         TextView val2 = new TextView(this);
         TextView val3 = new TextView(this);
-        val1.setText("55,378,655");
-        val2.setText("562,268,295");
-        val3.setText("617,646,950");
-        line2.addView(val1);
-        line2.addView(val2);
-        line2.addView(val3);
+        val1.setText("55,378,655"); line2.addView(val1);
+        val2.setText("562,268,295"); line2.addView(val2);
+        val3.setText("617,646,950"); line2.addView(val3);
         val1.setLayoutParams(txlp); val1.setGravity(Gravity.CENTER);
         val2.setLayoutParams(txlp); val2.setGravity(Gravity.CENTER);
         val3.setLayoutParams(txlp); val3.setGravity(Gravity.CENTER);
@@ -351,15 +325,12 @@ public class MainActivity extends AppCompatActivity {
         verll.addView(line3);
         verll.addView(line4);
         detail.addView(verll);
-
-
         accLayout.addView(detail);
 
 
-        //라인과 버튼
+        //라인과
 
         TextView line = new TextView(this);
-
         line.setHeight((int) dpToPx(1));
         line.setBackgroundColor(Color.DKGRAY);
         accLayout.addView(line);
@@ -368,21 +339,21 @@ public class MainActivity extends AppCompatActivity {
         //상세보기
         TextView btn = new TextView(this);
         btn.setText("상세보기");
-        btn.setClickable(false);
         btn.setBackgroundColor(Color.WHITE);
-        LinearLayout.LayoutParams dell = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams dell = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         dell.setMargins(10,10,10,10);
         btn.setPadding(10,10,10,10);
+        dell.gravity = Gravity.CENTER;
         btn.setLayoutParams(dell);
-      //  baseLayout.addView(btn);
+
         accLayout.addView(btn);
         btn.setGravity(Gravity.CENTER);
-        //addView를 해서 paramtext
         accLayout.setBackgroundResource(R.drawable.cardview);
         accLayout.setTop(200);
         baseLayout.addView(accLayout);
         verll.setVisibility(View.GONE);
 
+        btn.setClickable(false);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -402,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 // 텍스트 내용을 가져온다.
                 String searchData = textView.getText().toString();
-
+                btn.setClickable(false);
                 // 텍스트 내용이 비어있다면...
                 if (searchData.length() <4) {
 
@@ -416,20 +387,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
 
-                switch (i) {
-
-                    // Search 버튼일경우
-                    case EditorInfo.IME_ACTION_SEARCH:
-
-                        break;
-
-                    // Enter 버튼일경우
-                    default:
-
-                        btn.setClickable(true);
-
-                        return false;
-                }
 
                 // 내용 비우고 다시 이벤트 할수있게 선택
                 textView.clearFocus();
@@ -437,7 +394,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText("");
                 textView.setFocusableInTouchMode(true);
                 textView.setFocusable(true);
-
+                btn.setClickable(true);
                 return true;
 
 
@@ -446,12 +403,44 @@ public class MainActivity extends AppCompatActivity {
 
 //        baseLayout.addView(new StockCell(this));
 
-        ArrayList<Itemlist> ai = loadItemsFromFile();
+        ArrayList<Itemlist> list = loadItemsFromFile();
 
-        CellAdapter cellAdapter = new CellAdapter(ai);
-        ListView lv = new ListView(this);
-        lv.setAdapter(cellAdapter);
-        baseLayout.addView(lv);
+        CellAdapter cellAdapter = new CellAdapter(list);
+        ListView listView = new ListView(this);
+        listView.setBackgroundResource(R.drawable.line);
+        listView.setAdapter(cellAdapter);
+        baseLayout.addView(listView,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0,1));
+        listView.getOnItemClickListener();
+
+        //하단 메뉴 바
+        LinearLayout btmlayout = new LinearLayout(this);
+        DarkButtomBtn btmMenu = new DarkButtomBtn(this,"메뉴");
+        btmMenu.setGravity(Gravity.CENTER);
+//        bm.setHeight(60);
+        HorizontalScrollView bhview = new HorizontalScrollView(this);
+        DarkButtomBtn bbtn1 = new DarkButtomBtn(this,"홈");
+        DarkButtomBtn bbtn2 = new DarkButtomBtn(this,"현재가");
+        DarkButtomBtn bbtn3 = new DarkButtomBtn(this,"주식주문");
+        DarkButtomBtn bbtn4 = new DarkButtomBtn(this,"주식잔고");
+        DarkButtomBtn bbtn5 = new DarkButtomBtn(this,"지수종합");
+
+        LinearLayout BtmBtns = new LinearLayout(this);
+        BtmBtns.addView(bbtn1);
+        BtmBtns.addView(bbtn2);
+        BtmBtns.addView(bbtn3);
+        BtmBtns.addView(bbtn4);
+        BtmBtns.addView(bbtn5);
+        bhview.addView(BtmBtns);
+        btmlayout.addView(btmMenu);
+        btmlayout.addView(bhview);
+//        bl.setGravity(Gravity.BOTTOM);
+        LinearLayout.LayoutParams lpppp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        lpppp.gravity = Gravity.BOTTOM | Gravity.END ;
+        btmlayout.setLayoutParams(lpppp);
+        btmlayout.setBackgroundColor(Color.DKGRAY
+        );
+        baseLayout.addView(btmlayout);
 
 
     }
@@ -515,10 +504,8 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0;i<str.length;i++){
                 String[] s = str[i].split("\\|");
                 items.add(new Itemlist(s[0],s[1],s[2],s[3],s[4],s[5]));
-                Log.d("plz",s[0] + "OK");
+//                Log.d("plz",s[0] + "OK");
             }
-
-            Log.d("plz", String.valueOf(str.length));
 
             is.close();
         } catch (Exception e) {
