@@ -3,6 +3,7 @@ package com.example.my4weekschallenge;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +18,73 @@ import androidx.annotation.Nullable;
 
 import com.example.my4weekschallenge.data.Itemlist;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class StockCell extends LinearLayout {
 
-    final Context context = getContext();
+    private Context context = getContext();
+    private TextView stName;
+    private TextView stNum;
+    private TextView stPrice;
+    private TextView stArrow;
+    private TextView stPer;
+    private TextView stDiff;
 
-    Itemlist item;
+    public TextView getStPer() {
+        return stPer;
+    }
+
+    public void setStPer(TextView stPer) {
+        this.stPer = stPer;
+    }
+
+    public TextView getStDiff() {
+        return stDiff;
+    }
+
+    public void setStDiff(TextView stDiff) {
+        this.stDiff = stDiff;
+    }
+
+    private Itemlist item;
+
+    public TextView getStName() {
+        return stName;
+    }
+
+    public void setStName(TextView stName) {
+        this.stName = stName;
+    }
+
+    public TextView getStNum() {
+        return stNum;
+    }
+
+    public void setStNum(TextView stNum) {
+        this.stNum = stNum;
+    }
+
+    public TextView getStPrice() {
+        return stPrice;
+    }
+
+    public void setStPrice(TextView stPrice) {
+        this.stPrice = stPrice;
+    }
+
+    public TextView getStArrow() {
+        return stArrow;
+    }
+
+    public void setStArrow(TextView stArrow) {
+        this.stArrow = stArrow;
+    }
+
+    public Itemlist getItem() {
+        return item;
+    }
 
     public void setItem(Itemlist item) {
         this.item = item;
@@ -33,10 +94,46 @@ public class StockCell extends LinearLayout {
         super(context);
         this.item = item;
         init();
+        setControl(item);
+
     }
 
-    public StockCell(Context context, @Nullable AttributeSet attrs) {
+    public void setControl(Itemlist item){
+        Log.d("euneun" , item.toString());
+
+        stName.setText(item.getName());
+        stNum.setText(item.getTradeNum());
+        stPrice.setText(item.getPrice());
+        stArrow.setText(item.getArrow());
+        stPer.setText(item.getPercent() + "%");
+        stDiff.setText(item.getDiff());
+
+        if(item.getArrow().toLowerCase().equals("up")){
+            stArrow.setText("▲");
+            stDiff.setTextColor(Color.RED);
+            stArrow.setTextColor(Color.RED);
+            stPrice.setTextColor(Color.RED);
+            stPer.setTextColor(Color.RED);
+
+        }else if(item.getArrow().toLowerCase().equals("down")){
+            stArrow.setText("▼");
+            stDiff.setTextColor(Color.BLUE);
+            stArrow.setTextColor(Color.BLUE);
+            stPrice.setTextColor(Color.BLUE);
+            stPer.setTextColor(Color.BLUE);
+
+        }
+
+    }
+
+
+   public StockCell(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+    }
+
+
+    private void initCell(Context context) {
+
     }
 
     public void init(){
@@ -45,11 +142,9 @@ public class StockCell extends LinearLayout {
         LinearLayout tl = new LinearLayout(context);
         LinearLayout b1 = new LinearLayout(context);
         tl.setLayoutParams(new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        TextView stName = new TextView(context);
-        stName.setText(this.item.getName());
+        stName = new TextView(context);
         stName.setTextSize(24);
-        TextView stNum = new TextView(context);
-        stNum.setText(item.getTradeNum());
+        stNum = new TextView(context);
         TextView stMemo = new TextView(context);
         //stMemo.setText("지연시세");
         //stMemo.setBackgroundColor(Color.GREEN);
@@ -72,10 +167,9 @@ public class StockCell extends LinearLayout {
         b2.setLayoutParams(new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
 
 
-        TextView stPrice = new TextView(context);
+         stPrice = new TextView(context);
         //stPrice.setBackgroundColor(Color.WHITE);
         LinearLayout.LayoutParams plp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        stPrice.setText(item.getPrice());
 
         stPrice.setTextSize(30);
         stPrice.setLayoutParams(plp);
@@ -87,9 +181,8 @@ public class StockCell extends LinearLayout {
 
 
 
-        TextView stArrow = new TextView(context);
+         stArrow = new TextView(context);
         //stArrow.setBackgroundColor(Color.BLUE);
-        stArrow.setText(item.getArrow());
         stArrow.setPadding(10,0,10,0);
 
 
@@ -104,13 +197,11 @@ public class StockCell extends LinearLayout {
         b3.addView(stArrow);
         tl.addView(b3);
 
-        TextView stDiff = new TextView(context);
+        stDiff = new TextView(context);
         stDiff.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
         stDiff.setGravity(Gravity.CENTER_VERTICAL);
         //stDiff.setBackgroundColor(Color.DKGRAY);
-        stDiff.setText("3,700");
-        TextView stPer = new TextView(context);
-        stPer.setText("3.26%");
+        stPer = new TextView(context);
         stPer.setGravity(Gravity.CENTER_VERTICAL);
         stPer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,1));
         LinearLayout sl2 = new LinearLayout(context);
@@ -133,24 +224,7 @@ public class StockCell extends LinearLayout {
 //        tl.setBackgroundResource(R.drawable.line);
 
 
-        if(item.getArrow().toLowerCase().equals("up")){
-            stArrow.setText("▲");
-            stDiff.setTextColor(Color.RED);
-            stArrow.setTextColor(Color.RED);
-            stPrice.setTextColor(Color.RED);
-            stPer.setTextColor(Color.RED);
-
-        }else if(item.getArrow().toLowerCase().equals("down")){
-            stArrow.setText("▼");
-             stDiff.setTextColor(Color.BLUE);
-            stArrow.setTextColor(Color.BLUE);
-            stPrice.setTextColor(Color.BLUE);
-            stPer.setTextColor(Color.BLUE);
-
-        }
-
         addView(tl);
-
     }
 
 
