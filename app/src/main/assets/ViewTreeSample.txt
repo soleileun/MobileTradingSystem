@@ -1,0 +1,31 @@
+baseLayout
+- Toolbar
+    - btnlayout(검색,환경설정)
+- scrollLayout
+    - horizontalScrollView
+        - hscrollBtnLayout
+            - 5 Buttons
+        - btnXLayout
+            - X Button
+- accLayout
+    - Ll (card처럼 보이는 레이아웃에 들어갈 것 )
+        - Sp (계좌번호 스피너)
+        - Pw( 패스워드 editText)
+    - Detail
+        - Jango (잔고)
+        - revPer (수익률)
+        - Verll (세로줄로 디테일 쌓는 레이아웃)
+            - Line1
+            - Line2
+            - Line3
+            - Line4
+    - Line
+    - btn (상세보기 레이아웃 닫기 텍스트뷰)
+- listView
+    -
+- Btnlayout
+    - Btmbtn
+        - 5 Buttons for simple menu
+        - btnMenu
+
+

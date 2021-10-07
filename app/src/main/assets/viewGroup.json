@@ -1,0 +1,204 @@
+{
+  "LinearLayout": {
+    "Toolbar": {
+      "id": "toolbar",
+      "Text": "보유종목(국내)",
+      "Location": "",
+      "items": [
+        {
+          "LinearLayout": {
+            "id": "btnlayout"
+          }
+        }
+      ]
+    },
+    "LinearLayout": {
+      "id": "scrollLayout",
+      "location": "",
+      "items": [
+        {
+          "HorizontalScrollView": {
+            "id": "horizontalscrollview",
+            "location": "",
+            "items": [
+              {
+                "LinearLayout": {
+                  "id": "hscrollBtnLayout",
+                  "location": "",
+                  "items": [
+                    {
+                      "Button": {
+                        "id": "btn1"
+                      },
+                      "Button": {
+                        "id": ""
+                      },
+                      "Button": {
+                        "id": ""
+                      },
+                      "Button": {
+                        "id": ""
+                      },
+                      "Button": {
+                        "id": ""
+                      }
+                    }
+                  ]
+                },
+                "LinearLayout": {
+                  "id": "btnXLayout",
+                  "items": [
+                    {
+                      "Button": {
+                        "id": "",
+                        "Text": "X"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "LinearLayout": {
+      "id": "accLayout",
+      "location": "",
+      "items": [
+        {
+          "LinearLayout": {
+            "id": "ll",
+            "items": [
+              {
+                "Spineer": {
+                },
+                "EditText": {
+                }
+              }
+            ]
+          },
+          "LinearLayout": {
+            "id": "detail",
+            "items": [
+              {
+                "LinearLayout": {
+                  "id": "jango"
+                },
+                "LinearLayout": {
+                  "id": "revPer"
+                },
+                "LinearLayout": {
+                  "id": "verll",
+                  "orientation": "vertical",
+                  "items": [
+                    {
+                      "LinearyLayout": {
+                        "id": "Line1",
+                        "items": [
+                          {
+                            "TextView": {
+                            },
+                            "TextView": {
+                            },
+                            "TextView": {
+                            }
+                          }
+                        ]
+                      },
+                      "LinearyLayout": {
+                        "id": "Line2",
+                        "items": [
+                          {
+                            "TextView": {
+                            },
+                            "TextView": {
+                            },
+                            "TextView": {
+                            }
+                          }
+                        ]
+                      },
+                      "LinearyLayout": {
+                        "id": "Line3",
+                        "items": [
+                          {
+                            "TextView": {
+                            },
+                            "TextView": {
+                            },
+                            "TextView": {
+                            }
+                          }
+                        ]
+                      },
+                      "LinearyLayout": {
+                        "id": "Line4",
+                        "items": [
+                          {
+                            "TextView": {
+                            },
+                            "TextView": {
+                            },
+                            "TextView": {
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "TextView": {
+                  "id": "Line"
+                },
+                "Button": {
+                  "id": "",
+                  "Text": "닫기"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ListView": {
+    },
+    "LinearLayout": {
+      "id": "",
+      "items": [
+        {
+          "LinearLayout": {
+            "id": "",
+            "items": [
+              {
+                "Button": {
+                },
+                "Button": {
+                },
+                "Button": {
+                },
+                "Button": {
+                },
+                "Button": {
+                }
+              }
+            ]
+          }
+        },
+        {
+          "LinearLayout": {
+            "id": "",
+            "items": [
+              {
+                "Button": {
+                  "id": "",
+                  "Text": ""
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
