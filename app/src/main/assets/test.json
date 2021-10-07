@@ -1,0 +1,17 @@
+{"Button": {
+  "id": "file",
+  "Text": "Hi",
+  "location" : "100,100,100,100",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+},
+  "EditText": {
+    "id": "editText",
+    "Text" : "world"
+  }
+}
