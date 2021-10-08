@@ -1,0 +1,23 @@
+{
+  "LinearLayout1": {
+    "id": "hscrollBtnLayout",
+    "location": "",
+    "items": [{
+      "Button": {
+        "id": "btn1"
+      }},{
+      "Button": {
+        "id": "a"
+      }},{
+      "Button": {
+        "id": "b"
+      }},{
+      "Button": {
+        "id": "c"
+      }},{
+      "Button": {
+        "id": "d"
+      }}
+    ]
+  }
+}
