@@ -32,14 +32,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.my4weekschallenge.adapter.CellAdapter;
 import com.example.my4weekschallenge.data.Itemlist;
+import com.example.my4weekschallenge.manager.LayoutManager;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Week2Activity extends AppCompatActivity {
 
-    @SuppressLint("ResourceType")
-    @RequiresApi(api = Build.VERSION_CODES.N) //N -> Nougat버전의
+//    @SuppressLint("ResourceType")
+//    @RequiresApi(api = Build.VERSION_CODES.N) //N -> Nougat버전의
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class Week2Activity extends AppCompatActivity {
         // setContentView(R.layout.activity_main);
         // activity_main.xml로 화면을 표시한다 하지만 안할거니까!
         //레이아웃 파라미터 종류는 위젯이 아니라 소속되어 있는 부모 레이아웃에 따라 달라진다.
-
+        LayoutManager.getInstance();
         //레이아웃 파라미터 객체 생성
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -75,13 +76,14 @@ public class Week2Activity extends AppCompatActivity {
         btnlayout.setLayoutParams(new ActionBar.LayoutParams(
                         ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
                 ));
-        Button search = new Button(this);
-        search.setText("검색");
-        btnlayout.addView(search);
-        Button setting = new Button(this);
-        setting.setText("환경설정");
-        btnlayout.addView(setting);
-        toolbar.addView(btnlayout);
+
+//        Button search = new Button(this);
+//        search.setText("검색");
+//        btnlayout.addView(search);
+//        Button setting = new Button(this);
+//        setting.setText("환경설정");
+//        btnlayout.addView(setting);
+//        toolbar.addView(btnlayout);
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -396,15 +398,15 @@ public class Week2Activity extends AppCompatActivity {
 
         //하단 메뉴 바
         LinearLayout btmlayout = new LinearLayout(this);
-        DarkButtomBtn btmMenu = new DarkButtomBtn(this,"메뉴");
+        DarkBottomBtn btmMenu = new DarkBottomBtn(this,"메뉴");
         btmMenu.setGravity(Gravity.CENTER);
 //        bm.setHeight(60);
         HorizontalScrollView bhview = new HorizontalScrollView(this);
-        DarkButtomBtn bbtn1 = new DarkButtomBtn(this,"홈");
-        DarkButtomBtn bbtn2 = new DarkButtomBtn(this,"현재가");
-        DarkButtomBtn bbtn3 = new DarkButtomBtn(this,"주식주문");
-        DarkButtomBtn bbtn4 = new DarkButtomBtn(this,"주식잔고");
-        DarkButtomBtn bbtn5 = new DarkButtomBtn(this,"지수종합");
+        DarkBottomBtn bbtn1 = new DarkBottomBtn(this,"홈");
+        DarkBottomBtn bbtn2 = new DarkBottomBtn(this,"현재가");
+        DarkBottomBtn bbtn3 = new DarkBottomBtn(this,"주식주문");
+        DarkBottomBtn bbtn4 = new DarkBottomBtn(this,"주식잔고");
+        DarkBottomBtn bbtn5 = new DarkBottomBtn(this,"지수종합");
 
         LinearLayout BtmBtns = new LinearLayout(this);
         BtmBtns.addView(bbtn1);

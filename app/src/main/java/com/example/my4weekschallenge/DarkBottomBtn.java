@@ -9,18 +9,18 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class DarkButtomBtn extends androidx.appcompat.widget.AppCompatButton {
+public class DarkBottomBtn extends androidx.appcompat.widget.AppCompatButton {
 
     final Context context = getContext();
     String text;
 
-    public DarkButtomBtn(@NonNull Context context , String text) {
+    public DarkBottomBtn(@NonNull Context context , String text) {
         super(context);
         this.text = text;
         init();
     }
 
-    public DarkButtomBtn(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public DarkBottomBtn(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 

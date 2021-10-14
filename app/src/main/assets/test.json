@@ -1,17 +1,23 @@
-{"Button": {
-  "id": "file",
-  "Text": "Hi",
-  "location" : "100,100,100,100",
-  "popup": {
-    "menuitem": [
-      {"value": "New", "onclick": "CreateNewDoc()"},
-      {"value": "Open", "onclick": "OpenDoc()"},
-      {"value": "Close", "onclick": "CloseDoc()"}
+{
+
+  "RootData":{
+    "name": "root",
+    "arr" : [{
+      "name": "LinearLayout",
+      "chArr" : [{
+        "name": "Button1"
+      },{
+        "name": "LinearLayout",
+        "arr": [{
+
+        }]
+      },{
+        "name": "button"
+      }]
+    }, {
+      "name": "Button2"
+    }
     ]
-  }
-},
-  "EditText": {
-    "id": "editText",
-    "Text" : "world"
+
   }
 }
