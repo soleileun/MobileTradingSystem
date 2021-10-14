@@ -60,8 +60,8 @@ import java.util.logging.Level;
 
 public class MainActivity extends AppCompatActivity {
 
-    @SuppressLint("ResourceType")
-    @RequiresApi(api = Build.VERSION_CODES.N) //N -> Nougat버전의
+//    @SuppressLint("ResourceType")
+//    @RequiresApi(api = Build.VERSION_CODES.N) //N -> Nougat버전의
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
