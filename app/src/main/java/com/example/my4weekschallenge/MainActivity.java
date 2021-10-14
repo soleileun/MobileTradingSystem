@@ -1,98 +1,55 @@
 package com.example.my4weekschallenge;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.example.my4weekschallenge.adapter.CellAdapter;
-import com.example.my4weekschallenge.data.Itemlist;
+import android.content.res.AssetManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.my4weekschallenge.data.RootData;
+import com.example.my4weekschallenge.data.ViewData;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.logging.Level;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
-//    @SuppressLint("ResourceType")
-//    @RequiresApi(api = Build.VERSION_CODES.N) //N -> Nougat버전의
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LinearLayout ll = new LinearLayout(this);
-
+        LinearLayout baselayout = new LinearLayout(this);
+        LinearLayout layout = null;
         Button btn = new Button(this);
         btn.setText("Here");
         TextView tv = new TextView(this);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    clickBtn(tv);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        ll.setOrientation(LinearLayout.VERTICAL);
-        ll.addView(btn);
-        ll.addView(tv);
-
-        setContentView(ll);
-
-
+        try {
+            Log.d("test1","START!");
+            setContentView(readJsonFile(baselayout));
+        } catch (IOException e) {
+            Log.e("test1",e.toString());
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("test1",e.toString());
+        }
 
     }
 
-    private void clickBtn(TextView view) throws IOException, JSONException {
+    private View readJsonFile(LinearLayout view) throws IOException, JSONException {
 
         AssetManager assetManager = getAssets();
         InputStream is = assetManager.open("test.json");
@@ -101,129 +58,103 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuffer sb = new StringBuffer();
         String line = br.readLine();
-        while (line != null) {
+        while(line !=null){
             sb.append(line + "\n");
             line = br.readLine();
         }
         String jsonData = sb.toString();
+        return testFun(jsonData,view);
+       // JSONObject jsonObject = new JSONObject(jsonData);
+        //JSON과 베이스 레이아웃을 가지고 함수로 들어간다.
 
-        JSONObject jsonObject = new JSONObject(jsonData);
+    }
 
-//        String id = jsonObject.getString("id");
-//        String value = jsonObject.getString("value");
-        String menu = jsonObject.getString("Button");
-        Log.d("test1", jsonObject.names().toString()); // 가장 최상단을 ["Button"] 이런 형태로 가져올수있게됨.
-        String tt = jsonObject.names().toString(); // array로 반환된다고
-        Log.d("test1", "sang," + jsonObject.names().length());
-        for (int i = 0; i < jsonObject.names().length(); i++) {
-//            JSONArray str = jsonObject.getString(jsonObject.names().get(i));
-            String now = jsonObject.names().get(i).toString();
-            JSONObject array = jsonObject.getJSONObject(now);
-            Log.d("test1", String.valueOf(array.length()));
-            for (int j = 0; j < array.names().length(); j++) {
-                String s = array.names().get(j).toString();
-//                Boolean flag = array.has(s);
-//                String type = array.get(s).getClass().toString();//  classㄲㅏ지 하면 return type object 인데
-                Log.d("test1", "INNER : " + s );
-//                Log.d("test1", type);
-                if(array.get(s) instanceof JSONObject){ //  값이 제이슨 객체인지 확인 가능 ~ 약간 재귀형식?을 확인해줘야하나
-                    Log.d("test1" , "this is jsonObject");
-                    JSONObject inner = (JSONObject) array.get(s);
-                    Log.d("test1",inner.names().toString());
-//                    for(int k=0;k<inner.length();k++){
-//                        String string  = inner.get(k).toString();
-//                       Log.d("test1",string);
-//
-//
-//
-//                    }
+    public View testFun(String jsondata, LinearLayout layout) throws JSONException {
+        Gson gson = new Gson();
+        JSONObject jsonObject = new JSONObject(jsondata);
+        Log.d("asdf",jsonObject.toString());
+        RootData rootData = gson.fromJson(jsondata,RootData.class);
+
+        for(int i=0;i<rootData.getArr().size();i++){
+            ViewData vData = rootData.getArr().get(i);
+            Log.d("asdf",vData.getType());
+        }
+
+        return layout;
+    }
+
+    public View drawViews(JSONObject jsonObject, LinearLayout layout) throws JSONException {
+
+        //json object  에 names 확인
+        //names 에 있는 친구들 값이 json인지 확인
+        // json이라면 재귀? ㅠ
+        // 아니라면 상위 레이아웃에 추가?
+
+        String s = jsonObject.names().toString();
+        JSONArray jsonArray = jsonObject.names();
+        Log.d("test1",s );
+        Log.d("test1", String.valueOf(jsonArray.length()));
+        for(int i=0;i<jsonArray.length();i++){
+            JSONObject json = jsonObject.getJSONObject(jsonArray.get(i).toString());
+            JSONArray array = json.names();
+            String ss = array.toString();
+            Log.d("test1",ss + ss.length());
+            //items 항목의 값이 json이거나 배열이거나 하면 다시 재귀 걸고
+            //아니라면 레이아웃에 넣으세욧!
+
+            for(int j = 0; j<array.length(); j++) {
+                String k = array.get(j).toString();
+                //  Log.d("test1", array.get(j).toString()+"  : "+ json.get(k).toString());
+                CheckView(k,json.get(k));
+
+//                JSONObject innerJson = array.get(j).toString();
+                //아니야 여기서 뭐 다 셋 텍스트 해줄거야 ㅠㅠ??
+                //뷰를 매개변수로 가지고 속성을 추가해주는 메서드 하나 더 만들어야해
+//                JSONArray innerArray = innerJson.names();
+//                String key = innerArray.get(j).toString();
+//                String val = innerJson.get(key).toString();
+//                Log.d("test1", key + ":" + val);
+            }
+
+
+
+        }
+
+        return layout;
+    }
+
+    public void CheckView(String k, Object v) throws JSONException {
+        // Log.d("test1", "HERE!");
+        if(k.equals("id")){
+            Log.d("test1", "Inner id : " + v.toString());
+        }else if(k.equals("location")){
+            Log.d("test1", "Inner location : " + v.toString());
+        }else if(k.equals("items")){
+//           JSONObject array = (JSONObject) v;
+//           JSONArray s = array.names();
+//           LinearLayout layout = new LinearLayout(this);
+//           layout = (LinearLayout) drawViews(array,layout);
+
+            JSONArray array = (JSONArray) v;
+            Log.d("test1","herheerer" + array.length()); // 5
+
+
+//            Log.d("test1", i + " : " + obj.names());
+            for(int i=0;i< array.length();i++){
+                JSONObject object = (JSONObject) array.get(i);
+                JSONArray obArray = object.names();
+                for(int j=0;j < obArray.length();j++){
+                    LinearLayout ll = new LinearLayout(this);
+                    drawViews(object,ll);
                 }
 
-
-//                if (array.getClass().getSimpleName())
-
-
             }
-            Log.d("test1", i + array.toString());
-        }
-    }
+//            Log.d("test1",array.toString());
 
-        @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(MainActivity.this, item.getItemId() , Toast.LENGTH_SHORT).show();
-
-        switch (item.getItemId()){
-
-            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
-                Toast.makeText(MainActivity.this, "back" , Toast.LENGTH_SHORT).show();
-
-                finish();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void menuSelected(String item){
-        switch (item){
-            case "BACK":{
-                Toast.makeText(MainActivity.this, "back" , Toast.LENGTH_SHORT).show();
-               // finish();
-                return;}
-            case "SEARCH":{
-                Toast.makeText(MainActivity.this, "search" , Toast.LENGTH_SHORT).show();
-
-                return;
-            }
-            case "SETTING":{
-                Toast.makeText(MainActivity.this, "setting" , Toast.LENGTH_SHORT).show();
-
-                return;
-            }
-        }
-    }
-    public float dpToPx(float dp){
-        float px =  TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, dp,
-                this.getResources().getDisplayMetrics());
-        return px;
-    }
-    private ArrayList<Itemlist> loadItemsFromFile() {
-
-        AssetManager am = getAssets();
-//        AssetManager am = getResources().getAssets() ;
-        ArrayList<Itemlist> items = new ArrayList<>();
-        InputStream is = null;
-        byte buf[] = new byte[1024];
-        String text = "";
-
-        try {
-            is = am.open("stock.txt");
-
-            if (is.read(buf) > 0) {
-                text = new String(buf);
-            }
-            String[] str = text.split("\n");
-            for(int i=0;i<str.length;i++){
-                String[] s = str[i].split("\\|");
-                items.add(new Itemlist(s[0],s[1],s[2],s[3],s[4],s[5]));
-//                Log.d("plz",s[0] + "OK");
-            }
-
-            is.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }else{
+            Log.d("test1", k);
         }
 
-        if (is != null) {
-            try {
-                is.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return items;
     }
 
 

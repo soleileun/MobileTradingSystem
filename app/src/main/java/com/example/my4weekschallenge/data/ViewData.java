@@ -1,11 +1,88 @@
 package com.example.my4weekschallenge.data;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+
 public class ViewData {
 
-    //ㅈㅏ료구조를 먼저 생각을 하면 바로 파싱이된다.
-    String id;
-    String location ;
+    protected String type;
+    protected String width;
+    protected String height;
+    protected String weight;
+    protected String gravity;
+    protected String padding;
+    protected String text;
 
 
+    public String getText() {
+        return text;
+    }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(String gravity) {
+        this.gravity = gravity;
+    }
+
+    public String getPadding() {
+        return padding;
+    }
+
+    public void setPadding(String padding) {
+        this.padding = padding;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ViewData{" +
+                "type='" + type + '\'' +
+                ", width='" + width + '\'' +
+                ", height='" + height + '\'' +
+                ", weight='" + weight + '\'' +
+                ", gravity='" + gravity + '\'' +
+                ", padding='" + padding + '\'' +
+                ", text='" + text + '\'' +
+
+                '}';
+    }
 }

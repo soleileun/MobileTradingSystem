@@ -1,23 +1,104 @@
 {
-
-  "RootData":{
-    "name": "root",
-    "arr" : [{
-      "name": "LinearLayout",
-      "chArr" : [{
-        "name": "Button1"
-      },{
-        "name": "LinearLayout",
+  "type": "root",
+  "height" : "-1",
+  "width" : "-1",
+  "arr": [
+    {
+      "type": "toolbar",
+      "text": "보유종목(국내)",
+      "height": "",
+      "width": "",
+      "arr": [
+        {
+          "type": "LinearLayout",
+          "arr" : [{
+            "type": "Button",
+            "width": "",
+            "height": "",
+            "text" : "검색"
+          },{
+            "type": "Button",
+            "width": "",
+            "height": "",
+            "text" : "환경설정"
+          }]
+        }
+      ]
+    },{
+      "type": "LinearLayout",
+      "orientation" : "horizontal",
+      "arr" : [{
+        "type": "ScrollView",
         "arr": [{
-
+          "type": "LinearLayout",
+          "arr": [{
+            "type": "RoundButton",
+            "text" : ""
+          },{
+            "type": "RoundButton",
+            "text" : ""
+          },{
+            "type": "RoundButton",
+            "text" : ""
+          },{
+            "type": "RoundButton",
+            "text" : ""
+          },{
+            "type": "RoundButton",
+            "text" : ""
+          }]
         }]
       },{
-        "name": "button"
+        "type": "Button",
+        "text" : "X"
       }]
-    }, {
-      "name": "Button2"
+    },
+    {
+      "type": "LinearLayout",
+      "height": "",
+      "width": "",
+      "arr":[{
+        "type": "Spineer",
+        "width": "",
+        "height": "",
+        "Info": ""
+      },{
+        "type": "EditText",
+        "width": "",
+        "height": "",
+        "InputType": "Number:Password"
+      }]
+    },
+    {
+     "type" : "LinearLayout",
+      "arr": [{
+        "type": "ListView"
+        }
+      ]
+    },{
+      "type": "LinearLayout",
+      "arr": [{
+        "type": "LinearLayout",
+        "arr": [{
+          "type" : "DarkBtn",
+          "text" : ""
+        },{
+          "type" : "DarkBtn",
+          "text" : ""
+        },{
+          "type" : "DarkBtn",
+          "text" : ""
+        },{
+          "type" : "DarkBtn",
+          "text" : ""
+        },{
+          "type" : "DarkBtn",
+          "text" : ""
+        }]
+      },{
+        "type": "Button",
+        "text": "menu"
+      }]
     }
-    ]
-
-  }
+  ]
 }
