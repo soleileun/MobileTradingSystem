@@ -13,7 +13,7 @@ public class RootData extends ViewData
 //    protected String text;
     private String margin ;
     private String orientation;
-    private ArrayList<ViewData> arr;
+    private ArrayList<LinearLayoutData> arr;
 
 
     public String getType() {
@@ -24,11 +24,27 @@ public class RootData extends ViewData
         this.type = type;
     }
 
-    public ArrayList<ViewData> getArr() {
+    public ArrayList<LinearLayoutData> getArr() {
         return arr;
     }
 
-    public void setArr(ArrayList<ViewData> arr) {
+    public String getMargin() {
+        return margin;
+    }
+
+    public void setMargin(String margin) {
+        this.margin = margin;
+    }
+
+    public String getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
+    }
+
+    public void setArr(ArrayList<LinearLayoutData> arr) {
         this.arr = arr;
     }
 

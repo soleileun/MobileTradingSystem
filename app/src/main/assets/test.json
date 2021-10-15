@@ -1,16 +1,20 @@
 {
   "type": "root",
-  "height" : "-1",
+  "height" : "-2",
   "width" : "-1",
+  "orientation": "1",
   "arr": [
     {
       "type": "toolbar",
       "text": "보유종목(국내)",
-      "height": "",
-      "width": "",
+      "height": "-2",
+      "width": "-1",
       "arr": [
         {
           "type": "LinearLayout",
+          "width": "-2",
+          "height": "-2",
+          "gravity": "right",
           "arr" : [{
             "type": "Button",
             "width": "",
@@ -29,6 +33,7 @@
       "orientation" : "horizontal",
       "arr" : [{
         "type": "ScrollView",
+        "orientation": "0",
         "arr": [{
           "type": "LinearLayout",
           "arr": [{
@@ -70,7 +75,9 @@
       }]
     },
     {
-     "type" : "LinearLayout",
+     "type" : "ListView",
+      "orientation": "",
+      "margin" : "",
       "arr": [{
         "type": "ListView"
         }
@@ -97,7 +104,8 @@
         }]
       },{
         "type": "Button",
-        "text": "menu"
+        "text": "menu",
+        "color" : "gray"
       }]
     }
   ]

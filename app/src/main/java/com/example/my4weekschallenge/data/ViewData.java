@@ -13,6 +13,8 @@ public class ViewData {
     protected String gravity;
     protected String padding;
     protected String text;
+    protected String res;
+    protected String color;
 
 
     public String getText() {
@@ -71,6 +73,21 @@ public class ViewData {
         this.padding = padding;
     }
 
+
+    public String getRes() {
+        return res;
+    }
+
+    public void setRes(String res) {
+        this.res = res;
+    }
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     @Override
     public String toString() {
